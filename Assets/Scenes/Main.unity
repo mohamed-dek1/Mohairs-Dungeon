@@ -68311,6 +68311,7 @@ GameObject:
   - component: {fileID: 666988744}
   - component: {fileID: 666988745}
   - component: {fileID: 666988746}
+  - component: {fileID: 666988747}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -68451,8 +68452,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.75943375, y: 0.75908756, z: 0.2}
-  m_Center: {x: 0.03404045, y: 0.0052371025, z: 0}
+  m_Size: {x: 0.9945488, y: 0.49070787, z: 0.2}
+  m_Center: {x: 0.004098892, y: -0.23395467, z: 0}
 --- !u!114 &666988744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68499,6 +68500,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &666988747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666988738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1012b1fe11e7b49489c88f649a3fe839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &667345453
 PrefabInstance:
   m_ObjectHideFlags: 0
