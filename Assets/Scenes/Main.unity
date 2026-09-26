@@ -4591,6 +4591,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1817712589}
     m_Modifications:
+    - target: {fileID: 1713725316526695275, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
+      propertyPath: m_Name
+      value: Tile_Long_Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4736463927609908799, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4598,10 +4602,6 @@ PrefabInstance:
     - target: {fileID: 4736463927609908799, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1713725316526695275, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
-      propertyPath: m_Name
-      value: Tile_Long_Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8470866191112943300, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10538,6 +10538,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1817712589}
     m_Modifications:
+    - target: {fileID: 1713725316526695275, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
+      propertyPath: m_Name
+      value: Tile_Long_Wall (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4736463927609908799, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10553,10 +10557,6 @@ PrefabInstance:
     - target: {fileID: 4736463927609908799, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1713725316526695275, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
-      propertyPath: m_Name
-      value: Tile_Long_Wall (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8470866191112943300, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -103873,7 +103873,7 @@ PrefabInstance:
       addedObject: {fileID: 2080969284}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7268079777879203404, guid: 674ade0c61080b54ca4968c985439b69, type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 973485075}
   m_SourcePrefab: {fileID: 100100000, guid: 674ade0c61080b54ca4968c985439b69, type: 3}
 --- !u!4 &1037942130 stripped
@@ -127827,10 +127827,6 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8308156597700735667, guid: 56d378bc2e8e3404c887373fbcea6416, type: 3}
-      propertyPath: m_Name
-      value: Tile_NONE (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 4486342312188120077, guid: 56d378bc2e8e3404c887373fbcea6416, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14
@@ -127870,6 +127866,10 @@ PrefabInstance:
     - target: {fileID: 4486342312188120077, guid: 56d378bc2e8e3404c887373fbcea6416, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308156597700735667, guid: 56d378bc2e8e3404c887373fbcea6416, type: 3}
+      propertyPath: m_Name
+      value: Tile_NONE (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -151535,14 +151535,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1817712589}
     m_Modifications:
-    - target: {fileID: 8075358628896651360, guid: 1707fb921d50240c79a340c1bba4f511, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -357399571555526606, guid: 3ba3d3470bc5a5e4ca7292c7cd8f5e08, type: 3}
-    - target: {fileID: 8075358628896651360, guid: 1707fb921d50240c79a340c1bba4f511, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224948058917222577, guid: 1707fb921d50240c79a340c1bba4f511, type: 3}
       propertyPath: m_Name
       value: Tile_Right_Trigger
@@ -151586,6 +151578,14 @@ PrefabInstance:
     - target: {fileID: 7067086641686162436, guid: 1707fb921d50240c79a340c1bba4f511, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075358628896651360, guid: 1707fb921d50240c79a340c1bba4f511, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -357399571555526606, guid: 3ba3d3470bc5a5e4ca7292c7cd8f5e08, type: 3}
+    - target: {fileID: 8075358628896651360, guid: 1707fb921d50240c79a340c1bba4f511, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
