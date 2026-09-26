@@ -1,46 +1,50 @@
 using UnityEngine;
 
-public class SwordBeam : MonoBehaviour
+public class SwordBeam : Projectile
 {
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private GameObject shardSpawnerPrefab;
+    [SerializeField] private SwordShard[] shardPrefabs; // NE, NW, SW, SE
 
-    private Rigidbody rb;
+    private bool exploded = false;
 
-    private void Awake()
+    public override void Launch(Vector2 direction)
     {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    public void Launch(Vector2 direction)
-    {
-        rb.linearVelocity = direction * speed;
+        base.Launch(direction);
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
         rb.freezeRotation = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnHitEnemy()
     {
-        if (other.transform.root.CompareTag("Player"))
-            return;
+        Explode();
+    }
 
-        if (other.TryGetComponent<Enemy>(out Enemy enemy))
-        {
-            enemy.Defeat();
-            Explode();
-        }
-        else if (!other.isTrigger)
-        {
-            Explode();
-        }
+    protected override void OnHitSolid()
+    {
+        Explode();
     }
 
     private void Explode()
     {
-        if (shardSpawnerPrefab != null)
-            Instantiate(shardSpawnerPrefab, transform.position, Quaternion.identity);
+        if (exploded)
+            return;
+
+        exploded = true;
+
+        Vector2[] directions = new Vector2[]
+        {
+            new Vector2(1, 1),   // NE
+            new Vector2(-1, 1),  // NW
+            new Vector2(-1, -1), // SW
+            new Vector2(1, -1)   // SE
+        };
+
+        for (int i = 0; i < directions.Length; i++)
+        {
+            SwordShard shard = Instantiate(shardPrefabs[i], transform.position, Quaternion.identity);
+            shard.Launch(directions[i]);
+        }
 
         Destroy(gameObject);
     }

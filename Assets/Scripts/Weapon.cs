@@ -4,15 +4,21 @@ public class Weapon : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (tag == "beam sword")
+        if (other.transform.root.CompareTag("Player"))
+            return;
+
+        if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            Debug.Log("Hit something");
-            Destroy(this.gameObject);
+            enemy.Defeat();
+            OnHitEnemy();
         }
-        if (other.CompareTag("enemy"))
+        else if (!other.isTrigger)
         {
-            Debug.Log("Hit enemy");
-            Destroy(other.gameObject);
+            OnHitSolid();
         }
     }
+
+    // What happens to the weapon itself after a hit. The melee sword does nothing.
+    protected virtual void OnHitEnemy() { }
+    protected virtual void OnHitSolid() { }
 }

@@ -1,30 +1,7 @@
-using UnityEngine;
-
-public class SwordShard : MonoBehaviour
+public class SwordShard : Projectile
 {
-    [SerializeField] private float speed = 8f;
-    [SerializeField] private float maxLife = 0.5f;
-
-    private Rigidbody rb;
-
-    private void Awake()
+    protected override void OnHitEnemy()
     {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    public void Launch(Vector2 direction)
-    {
-        rb.linearVelocity = direction * speed;
-
-        Destroy(gameObject, maxLife);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<Enemy>(out Enemy enemy))
-        {
-            enemy.Defeat();
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }

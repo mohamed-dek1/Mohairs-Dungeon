@@ -15,7 +15,6 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private Sprite[] moveLeft;
     [SerializeField] private Sprite[] moveRight;
     [SerializeField] private Sprite[] attacks; // Up, Down, Left, Right
-    [SerializeField] private Sprite[] playerStunSprite; // Up, Down, Left, Right
     [SerializeField] private ArrowKeyMovement arrowKeyMovement;
 
     // ==========================
@@ -28,6 +27,7 @@ public class PlayerAnimator : MonoBehaviour
     private int maxFrames = 2;
     private float timer;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -36,38 +36,25 @@ public class PlayerAnimator : MonoBehaviour
         currFrame = 0;
     }
 
+    // Update is called once per frame
     void Update()
     {
         Direction facing = arrowKeyMovement.GetDirectionFacing();
-
-        // Stun State Priority
-        if (arrowKeyMovement.GetIsStunned())
-        {
-            spriteRenderer.sprite = playerStunSprite[(int)facing];
-            return;
-        }
-
-        // Attack State Priority
         if (arrowKeyMovement.GetIsAttacking())
         {
             spriteRenderer.sprite = attacks[(int)facing];
-            currentSprites = null;
+            currentSprites = null; // forces SetDirection to redraw the walk sprite after the attack
             return;
         }
 
-        // Movement State
-        if (facing == Direction.Right) {
+        if (facing == Direction.Right)
             SetDirection(moveRight);
-        }
-        else if (facing == Direction.Left) {
+        else if (facing == Direction.Left)
             SetDirection(moveLeft);
-        }
-        else if (facing == Direction.Up) {
+        else if (facing == Direction.Up)
             SetDirection(moveUp);
-        }
-        else if (facing == Direction.Down) {
+        else if (facing == Direction.Down)
             SetDirection(moveDown);
-        }
 
         Vector2 velocity = rb.linearVelocity;
         if (velocity.sqrMagnitude < 0.001f)

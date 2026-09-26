@@ -107,7 +107,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordBeam
   speed: 10
-  shardSpawnerPrefab: {fileID: 6425956708203781200, guid: cb45f421f09b4c749916fdb005cc8c18, type: 3}
+  maxLife: 2
+  shardPrefabs:
+  - {fileID: 649222212160906700, guid: fa09190273f9a4246bde79ecdd9f4d86, type: 3}
+  - {fileID: 2044558355326180788, guid: 07867e7d674a994418d964c7a936d05c, type: 3}
+  - {fileID: 1326662359970919139, guid: a884c4db2aea41c4bbf2869037bac4e8, type: 3}
+  - {fileID: 616454718378007729, guid: c2e14e30dafb41b4387394ff67880c97, type: 3}
 --- !u!54 &7262482320776889712
 Rigidbody:
   m_ObjectHideFlags: 0
