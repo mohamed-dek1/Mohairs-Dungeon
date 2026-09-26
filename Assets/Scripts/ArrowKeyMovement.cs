@@ -6,6 +6,7 @@ public class ArrowKeyMovement : MonoBehaviour
 
     public float movement_speed = 4.0f;
     public float gridSize = 0.5f;
+    private bool isAttacking = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +17,12 @@ public class ArrowKeyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (isAttacking)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+        
         Vector2 current_input = GetInput();
 
         rb.linearVelocity = current_input;
@@ -98,5 +105,15 @@ public class ArrowKeyMovement : MonoBehaviour
 
         float maxSpeed = distance / Time.fixedDeltaTime;
         return Mathf.Min(movement_speed, maxSpeed);
+    }
+
+    public int GetIsAttacking()
+    {
+        return isAttacking ? 1 : 0;
+    }
+
+    public void SetIsAttacking(bool value)
+    {
+        isAttacking = value;
     }
 }
