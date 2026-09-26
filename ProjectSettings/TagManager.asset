@@ -8,6 +8,8 @@ TagManager:
   - enemy
   - sword
   - beam sword
+  - wall
+  - shard
   layers:
   - Default
   - TransparentFX
