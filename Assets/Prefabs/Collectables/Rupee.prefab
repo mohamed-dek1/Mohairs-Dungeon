@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8295908906863192246}
   - component: {fileID: 1801632088926748913}
   - component: {fileID: 1175782704073487175}
+  - component: {fileID: 2470922299433754049}
   m_Layer: 0
-  m_Name: rupee
+  m_Name: Rupee
   m_TagString: rupee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 9044317173839852587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.46241, y: 6.99, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -113,3 +114,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.625, y: 1.0625, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2470922299433754049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9044317173839852587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eace4ae6d80044bd7bcd57b3f4d1fae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  value: 1

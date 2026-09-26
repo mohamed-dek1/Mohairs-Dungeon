@@ -15,15 +15,12 @@ public class Collector : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        GameObject other_game_object = other.gameObject;
+        if (inventory == null)
+            return;
 
-        if (other_game_object.tag == "rupee")
+        if (other.TryGetComponent<Collectable>(out Collectable collectible))
         {
-            if (inventory != null)
-            {
-                inventory.AddRupees(1);
-            }
-            Destroy(other_game_object);
+            collectible.Collect(inventory);
         }
     }
 }

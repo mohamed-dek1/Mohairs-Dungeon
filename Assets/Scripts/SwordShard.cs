@@ -21,13 +21,10 @@ public class SwordShard : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("rupee") || other.CompareTag("wall") || other.CompareTag("shard") || other.CompareTag("beam sword")) return;
-
-        if (other.CompareTag("enemy"))
+        if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            Destroy(other.gameObject);
+            enemy.Defeat();
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }

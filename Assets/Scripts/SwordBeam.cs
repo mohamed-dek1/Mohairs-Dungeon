@@ -23,21 +23,24 @@ public class SwordBeam : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.root.CompareTag("Player") || other.CompareTag("rupee") 
-        || other.CompareTag("sword") || other.CompareTag("shard"))
-        {
+        if (other.transform.root.CompareTag("Player"))
             return;
-        }
 
-        if (other.CompareTag("enemy"))
+        if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            Destroy(other.gameObject);
+            enemy.Defeat();
+            Explode();
         }
+        else if (!other.isTrigger)
+        {
+            Explode();
+        }
+    }
 
+    private void Explode()
+    {
         if (shardSpawnerPrefab != null)
-        {
             Instantiate(shardSpawnerPrefab, transform.position, Quaternion.identity);
-        }
 
         Destroy(gameObject);
     }

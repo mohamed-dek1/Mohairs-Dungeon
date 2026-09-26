@@ -3,12 +3,38 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    int rupee_count = 0;
     private string currentWeapon = "sword";
 
-    public void AddRupees(int num_rupees)
+    [SerializeField] private int rupees = 0;
+    [SerializeField] private int keys = 0;
+
+    public void AddRupees(int amount)
     {
-        rupee_count += num_rupees;
+        rupees += amount;
+    }
+
+    public void AddKey()
+    {
+        keys++;
+    }
+
+    public bool UseKey()
+    {
+        if (keys <= 0)
+            return false;
+
+        keys--;
+        return true;
+    }
+
+    public int GetRupees()
+    {
+        return rupees;
+    }
+
+    public int GetKeys()
+    {
+        return keys;
     }
 
     public void SetCurrentWeapon(string weapon)
@@ -19,10 +45,5 @@ public class Inventory : MonoBehaviour
     public string GetCurrentWeapon()
     {
         return currentWeapon;
-    }
-
-    public int GetRupees()
-    {
-        return rupee_count;
     }
 }
