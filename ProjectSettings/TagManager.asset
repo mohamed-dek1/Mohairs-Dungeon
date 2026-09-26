@@ -10,6 +10,10 @@ TagManager:
   - beam sword
   - wall
   - shard
+  - LeftDoor
+  - RightDoor
+  - UpDoor
+  - DownDoor
   layers:
   - Default
   - TransparentFX
