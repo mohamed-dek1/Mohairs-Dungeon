@@ -68490,7 +68490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c6816f3203847b4843d1779a1be8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
-  frameRate: 0.1
+  frameRate: 0.18
   moveUp:
   - {fileID: 21300004, guid: 45afd34443b96473598b76e2b1778b4e, type: 3}
   - {fileID: 21300028, guid: 45afd34443b96473598b76e2b1778b4e, type: 3}
