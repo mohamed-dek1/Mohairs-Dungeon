@@ -23,10 +23,14 @@ public class SwordBeam : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("sword") || other.CompareTag("Player") || other.CompareTag("rupee"))
+        if (other.transform.root.CompareTag("Player") || other.CompareTag("rupee"))
         {
             return;
         }
+        // if (other.CompareTag("sword") || other.CompareTag("Player") || other.CompareTag("rupee"))
+        // {
+        //     return;
+        // }
         if (other.CompareTag("enemy"))
         {
             Destroy(other.gameObject);

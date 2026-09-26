@@ -1,17 +1,56 @@
 using UnityEngine;
+using System.Collections;
+
+public enum Direction { Up = 0, Down = 1, Left = 2, Right = 3 }
 
 public class ArrowKeyMovement : MonoBehaviour
 {
+    // ==========================
+    // Public fields
+    // ==========================
     Rigidbody rb;
-
     public float movement_speed = 4.0f;
     public float gridSize = 0.5f;
+    public float attackTime = 0.5f;
+
+    // ==========================
+    // Serialized fields
+    // ==========================
+    [SerializeField] private GameObject[] weapons; // Up, Down, Left, Right
+    [SerializeField] private GameObject swordBeamPrefab;
+
+    // ==========================
+    // Private fields
+    // ==========================
     private bool isAttacking = false;
+    private Direction directionFacing = Direction.Down;
+    private int swordOffset = 0;
+    private GameObject activeBeam;
+
+
+    public bool GetIsAttacking()
+    {
+        return isAttacking;
+    }
+
+    public Direction GetDirectionFacing()
+    {
+        return directionFacing;
+    }
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        foreach (GameObject weapon in weapons)
+            weapon.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
+            StartCoroutine(Attack());
     }
 
     // Update is called once per frame
@@ -24,8 +63,42 @@ public class ArrowKeyMovement : MonoBehaviour
         }
         
         Vector2 current_input = GetInput();
-
         rb.linearVelocity = current_input;
+    }
+
+    IEnumerator Attack()
+    {
+        isAttacking = true;
+        GameObject weapon = weapons[(int)directionFacing + (4 * swordOffset)];
+        weapon.SetActive(true);
+
+        if (activeBeam == null)
+            FireSwordBeam();
+
+        yield return new WaitForSeconds(attackTime);
+
+        weapon.SetActive(false);
+        isAttacking = false;
+    }
+
+    private void FireSwordBeam()
+    {
+        activeBeam = Instantiate(swordBeamPrefab, transform.position, Quaternion.identity);
+
+        if (activeBeam.TryGetComponent<SwordBeam>(out var beam))
+            beam.Launch(GetDirectionVector(directionFacing));
+    }
+
+    private Vector2 GetDirectionVector(Direction direction)
+    {
+        if (direction == Direction.Up)
+            return Vector2.up;
+        else if (direction == Direction.Down)
+            return Vector2.down;
+        else if (direction == Direction.Left)
+            return Vector2.left;
+        else
+            return Vector2.right;
     }
 
     Vector2 GetInput()
@@ -38,7 +111,7 @@ public class ArrowKeyMovement : MonoBehaviour
 
     // calculate movement vector based on inputs
     // assume params are either -1.0f, 0.0f, 1.0f
-    Vector2 CalculateMovement(float horizontal_input, float vertical_input)
+    private Vector2 CalculateMovement(float horizontal_input, float vertical_input)
     {
         float horizontal_movement = 0f;
         float vertical_movement = 0f;
@@ -52,6 +125,11 @@ public class ArrowKeyMovement : MonoBehaviour
             }
             else
             {
+                if (horizontal_input > 0)
+                    directionFacing = Direction.Right;
+                else
+                    directionFacing = Direction.Left;
+
                 horizontal_movement = horizontal_input * movement_speed;
                 vertical_movement = 0;
             }
@@ -66,6 +144,11 @@ public class ArrowKeyMovement : MonoBehaviour
             }
             else
             {
+                if (vertical_input > 0)
+                    directionFacing = Direction.Up;
+                else
+                    directionFacing = Direction.Down;
+
                 vertical_movement = vertical_input * movement_speed;
                 horizontal_movement = 0;
             }
@@ -74,13 +157,13 @@ public class ArrowKeyMovement : MonoBehaviour
         return new Vector2(horizontal_movement, vertical_movement);
     }
 
-    bool AxisAligned(float pos)
+    private bool AxisAligned(float pos)
     {
         float remainder = pos % gridSize;
         return Mathf.Abs(remainder) < 0.001f || Mathf.Abs(remainder - gridSize) < 0.001f;
     }
     
-    float GetAlignDir(float pos)
+    private float GetAlignDir(float pos)
     {
         float remainder = pos % gridSize;
 
@@ -96,7 +179,7 @@ public class ArrowKeyMovement : MonoBehaviour
             return -1f;
     }
 
-    float GetAlignSpeed(float pos)
+    private float GetAlignSpeed(float pos)
     {
         float remainder = pos % gridSize;
         if (remainder < 0)
@@ -105,15 +188,5 @@ public class ArrowKeyMovement : MonoBehaviour
 
         float maxSpeed = distance / Time.fixedDeltaTime;
         return Mathf.Min(movement_speed, maxSpeed);
-    }
-
-    public int GetIsAttacking()
-    {
-        return isAttacking ? 1 : 0;
-    }
-
-    public void SetIsAttacking(bool value)
-    {
-        isAttacking = value;
     }
 }
