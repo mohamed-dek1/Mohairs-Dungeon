@@ -1,11 +1,16 @@
 using UnityEngine;
+using System.Collections;
 
 public class RoomTransition : MonoBehaviour
 {
-    Rigidbody rb;
-    ArrowKeyMovement arrowKeyMovement;
+    public float roomWidth = 16f;
+    public float roomHeight = 11f;
+    public float transitionTime = 1.0f;
+    public float walkSpeed = 2.0f;
 
-    private bool transition = false;
+    Rigidbody rb;
+    private ArrowKeyMovement arrowKeyMovement;
+    bool transitioning = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,28 +25,57 @@ public class RoomTransition : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider door)
+    void OnTriggerEnter(Collider other)
     {
-        if (transition)
-        {
+        if (transitioning)
             return;
-        }
-    }
-
-    private Vector2 getDirFromTag(string tag)
-    {
-        switch (tag)
+        
+        Vector2 direction;
+        switch (other.tag)
         {
             case "LeftDoor":
-                return Vector2.left;
+                direction = Vector2.left;
+                break;
             case "RightDoor":
-                return Vector2.right;
+                direction = Vector2.right;
+                break;
             case "UpDoor":
-                return Vector2.up;
+                direction = Vector2.up;
+                break;
             case "DownDoor":
-                return Vector2.down;
+                direction =Vector2.down;
+                break;
             default:
-                return Vector2.zero;
+                return;
         }
+
+        if (Vector2.Dot(rb.linearVelocity, direction) <= 0)
+            return;
+
+        StartCoroutine(Transition(direction));
+    }
+
+    IEnumerator Transition(Vector2 direction)
+    {
+        transitioning = true;
+        arrowKeyMovement.enabled = false;
+
+        Transform cam = Camera.main.transform;
+        Vector3 camStart = cam.position;
+        Vector3 camEnd = camStart + new Vector3(direction.x * roomWidth, direction.y * roomHeight, 0);
+
+        float t = 0f;
+        while (t < transitionTime)
+        {
+            t += Time.deltaTime;
+            cam.position = Vector3.Lerp(camStart, camEnd, t / transitionTime);
+            rb.linearVelocity = direction * walkSpeed;
+            yield return null;
+        }
+
+        cam.position = camEnd;
+        rb.linearVelocity = Vector2.zero;
+        arrowKeyMovement.enabled = true;
+        transitioning = false;
     }
 }
