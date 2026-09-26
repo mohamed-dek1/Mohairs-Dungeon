@@ -15,11 +15,15 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private ArrowKeyMovement arrowKeyMovement;
     [SerializeField] private Sprite[] attacks;
     [SerializeField] private GameObject[] weapons;
+    [SerializeField] private GameObject swordBeamPrefab;
+    private int swordOffset = 0;
+    private int beamSwordOffset = 1;
     private int directionFacing = 1; // 0: up, 1: down, 2: left, 3: right
     private int currFrame;
     private int maxFrames = 2;
     private float timer;
     private bool isAttacking = false;
+    private GameObject activeBeam;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +39,7 @@ public class PlayerAnimator : MonoBehaviour
         Vector2 dir = rb.linearVelocity;
         bool fastUpdate = false;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
         {
             Debug.Log("Attack");
             isAttacking = true;
@@ -92,11 +96,49 @@ public class PlayerAnimator : MonoBehaviour
     {
         Sprite currentSprite = spriteRenderer.sprite;
         spriteRenderer.sprite = attacks[directionFacing];
-        GameObject currentWeapon = Instantiate(weapons[directionFacing], transform);
+
+        GameObject currentWeapon = Instantiate(weapons[directionFacing + (4 * swordOffset)], transform);
+
+        if (activeBeam == null)
+        {
+            FireSwordBeam();
+        }
+
         yield return new WaitForSeconds(waitTime);
-        spriteRenderer.sprite = currentSprite;
+
         Destroy(currentWeapon);
+        spriteRenderer.sprite = currentSprite;
         isAttacking = false;
         arrowKeyMovement.SetIsAttacking(false);
+    }
+
+    private void FireSwordBeam()
+    {
+        Vector2 beamSwordVelocity;
+        switch (directionFacing)
+        {
+            case 0:
+                beamSwordVelocity = Vector2.up;
+                break;
+            case 1:
+                beamSwordVelocity = Vector2.down;
+                break;
+            case 2:
+                beamSwordVelocity = Vector2.left;
+                break;
+            case 3:
+                beamSwordVelocity = Vector2.right;
+                break;
+            default:
+                beamSwordVelocity = Vector2.zero;
+                break;
+        }
+
+        activeBeam = Instantiate(swordBeamPrefab, transform.position, Quaternion.identity);
+        
+        if (activeBeam.TryGetComponent<SwordBeam>(out var beam))
+        {
+            beam.Launch(beamSwordVelocity);
+        }
     }
 }

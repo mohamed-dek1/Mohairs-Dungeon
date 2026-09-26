@@ -6,6 +6,8 @@ TagManager:
   tags:
   - rupee
   - enemy
+  - sword
+  - beam sword
   layers:
   - Default
   - TransparentFX

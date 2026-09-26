@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3888767710120657825}
   m_Layer: 0
   m_Name: swordUp
-  m_TagString: Untagged
+  m_TagString: sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
