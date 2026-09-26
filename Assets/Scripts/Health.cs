@@ -1,41 +1,41 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
-    
-    public int currentHealth;
+    public event Action OnDeath;
     public UnityEvent onTakeDamage;
+
+    [SerializeField] private int maxHealth = 100;
+
+    private int currentHealth;
 
     void Awake()
     {
         currentHealth = maxHealth;
     }
 
-    [ContextMenu("Take Damage")]
-    public void TakeDamage()
+    public void TakeDamage(int amount)
     {
-        int damage = 10;
-        currentHealth -= damage;
+        if (currentHealth <= 0)
+            return;
 
-        onTakeDamage?.Invoke();
+        currentHealth -= amount;
+
+        if (onTakeDamage != null)
+            onTakeDamage.Invoke();
 
         if (currentHealth <= 0)
         {
-            if (gameObject.CompareTag("Player"))
-            {
-                Debug.Log("Player has died.");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-            else
-            {
-                Debug.Log($"{gameObject.name} has died.");
-                Destroy(gameObject);
-            }
+            currentHealth = 0;
+
+            if (OnDeath != null)
+                OnDeath();
         }
     }
+
 
     public void Heal(int amount)
     {
@@ -44,5 +44,26 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    [ContextMenu("Take Damage")]
+    private void TestDamage()
+    {
+        TakeDamage(50);
     }
 }

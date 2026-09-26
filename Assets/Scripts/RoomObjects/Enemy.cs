@@ -8,11 +8,14 @@ public abstract class Enemy : RoomObject
     protected Rigidbody rb;
     protected bool defeated = false;
     protected Vector3 startPosition;
+    protected Health health;
 
     public override void Init(RoomHandler handler)
     {
         rb = GetComponent<Rigidbody>();
+        health = GetComponent<Health>();
 
+        health.OnDeath += Defeat;
         startPosition = transform.position;
         base.Init(handler);
         room.RegisterEnemy();
@@ -23,7 +26,7 @@ public abstract class Enemy : RoomObject
         if (defeated)
             return;
 
-        transform.position = startPosition;
+        health.ResetHealth();
         base.RoomEntered();
     }
 
@@ -35,7 +38,7 @@ public abstract class Enemy : RoomObject
     // Every enemy must write its own movement
     protected abstract void Move();
 
-    public virtual void Defeat()
+    protected virtual void Defeat()
     {
         defeated = true;
         room.EnemyDefeated();

@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] protected int damage = 1;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.root.CompareTag("Player"))
             return;
 
-        if (other.TryGetComponent<Enemy>(out Enemy enemy))
+        if (other.TryGetComponent<Health>(out Health targetHealth))
         {
-            enemy.Defeat();
+            targetHealth.TakeDamage(damage);
             OnHitEnemy();
         }
         else if (!other.isTrigger)

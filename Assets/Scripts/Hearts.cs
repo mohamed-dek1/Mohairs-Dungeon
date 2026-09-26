@@ -11,7 +11,7 @@ public class Hearts : MonoBehaviour
     {
         if (playerHealth == null) return;
 
-        UpdateHeartsUI(playerHealth.currentHealth);
+        UpdateHeartsUI(playerHealth.GetCurrentHealth());
     }
 
     private void UpdateHeartsUI(int health)
