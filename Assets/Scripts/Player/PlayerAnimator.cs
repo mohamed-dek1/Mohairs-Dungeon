@@ -16,6 +16,7 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private Sprite[] moveRight;
     [SerializeField] private Sprite[] attacks; // Up, Down, Left, Right
     [SerializeField] private ArrowKeyMovement arrowKeyMovement;
+    [SerializeField] private Sprite[] stunSprites; // Up, Down, Left, Right
 
     // ==========================
     // Private fields
@@ -40,6 +41,12 @@ public class PlayerAnimator : MonoBehaviour
     void Update()
     {
         Direction facing = arrowKeyMovement.GetDirectionFacing();
+
+        if (arrowKeyMovement.getIsStunned())
+        {
+            spriteRenderer.sprite = stunSprites[(int)facing];
+        }
+
         if (arrowKeyMovement.GetIsAttacking())
         {
             spriteRenderer.sprite = attacks[(int)facing];

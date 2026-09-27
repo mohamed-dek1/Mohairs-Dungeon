@@ -22,6 +22,9 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
             return;
 
+        if (tag == "Player" && GameManager.god_mode)
+            return;
+
         currentHealth -= amount;
 
         if (onTakeDamage != null)

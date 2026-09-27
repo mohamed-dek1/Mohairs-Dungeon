@@ -34,7 +34,10 @@ public class ArrowKeyMovement : MonoBehaviour
     private int arrowOffset = 4;
     private GameObject activeBeam;
 
-
+    public bool getIsStunned()
+    {
+        return isStunned;
+    }
     public bool GetIsAttacking()
     {
         return isAttacking;
@@ -61,6 +64,11 @@ public class ArrowKeyMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && !isArrowOnCooldown && !isAttacking && inventory.CurrentItem == ItemType.Bow && inventory.Coins > 0){
             StartCoroutine(ThrowArrow());
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            GameManager.god_mode = !GameManager.god_mode;
         }
     }
 

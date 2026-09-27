@@ -27,6 +27,23 @@ public class Inventory : MonoBehaviour
         unlockedItems.Add(ItemType.Sword);
     }
 
+    public void Update()
+    {
+        if (GameManager.god_mode)
+        {
+            coins = 99;
+            bombs = 99;
+            keys = 99;
+        }
+
+        UnlockItem(ItemType.Bow);
+
+        if (currentItem == ItemType.Bow)
+        {
+            SetCurrentItem(ItemType.Bow);
+        }
+    }
+
     // UNLOCK AND HAS ITEM //
 
     public void UnlockItem(ItemType item)
@@ -72,6 +89,10 @@ public class Inventory : MonoBehaviour
 
     public void AddCoins(int amount) {
         coins += amount;
+        if (coins > 99)
+        {
+            coins = 99;
+        }
     }
     public bool UseArrow()
     {
@@ -92,6 +113,11 @@ public class Inventory : MonoBehaviour
 
     public void AddBombs(int amount) {
         bombs += amount;
+
+        if (bombs > 99)
+        {
+            bombs = 99;
+        }
     }
     public bool UseBomb()
     {
@@ -108,6 +134,10 @@ public class Inventory : MonoBehaviour
 
     public void AddKey() {
         keys++;
+        if (keys > 99)
+        {
+            keys = 99;
+        }
     }
 
     public bool UseKey()
