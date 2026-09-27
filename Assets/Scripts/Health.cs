@@ -19,6 +19,17 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    void Update()
+    {
+        if (GameManager.god_mode)
+        {
+            if (tag == "Player")
+            {
+                currentHealth = maxHealth;
+            }
+        }
+    } 
+
     public void TakeDamage(int amount)
     {
         if (currentHealth <= 0)
