@@ -32,13 +32,13 @@ public class RoomHandler : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && OnRoomEnter != null)
+        if (other.CompareTag("Player") && !other.isTrigger && OnRoomEnter != null)
             OnRoomEnter();
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && OnRoomExit != null)
+        if (other.CompareTag("Player") && !other.isTrigger && OnRoomExit != null)
             OnRoomExit();
     }
 

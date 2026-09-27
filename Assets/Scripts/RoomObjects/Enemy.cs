@@ -22,8 +22,9 @@ public abstract class Enemy : RoomObject
         if (!other.CompareTag("Player"))
             return;
 
-        if (other.TryGetComponent<Health>(out Health playerHealth))
-            playerHealth.TakeDamage(contactDamage);
+        Health playerHealth = other.GetComponentInParent<Health>();
+        if (playerHealth != null)
+            playerHealth.TakeDamage(contactDamage, transform.position);
     }
 
     public override void Init(RoomHandler handler)

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1116118539910042016}
   - component: {fileID: 3737002155861324353}
   - component: {fileID: 3359464007219998485}
-  - component: {fileID: 8286620885138485358}
   - component: {fileID: 3494398274333159402}
   - component: {fileID: 8990023769189975446}
+  - component: {fileID: 7218140458066166747}
   m_Layer: 0
   m_Name: Stalfos
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 36.96, y: 5, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -162,20 +162,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.14, y: 0.135, z: 0.20000002}
-  m_Center: {x: 0, y: -0.005, z: 0}
---- !u!114 &8286620885138485358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3154311362563784566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0569f1f9cb46b404ca9aa2345e905973, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_Size: {x: 0.875, y: 0.85, z: 0.20000002}
+  m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!114 &3494398274333159402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,3 +197,22 @@ MonoBehaviour:
       m_Calls: []
   maxHealth: 1
   invincibleTime: 0.5
+--- !u!114 &7218140458066166747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154311362563784566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0569f1f9cb46b404ca9aa2345e905973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dropper
+  carriedItem: {fileID: 0}
+  carriedOffset: {x: 0, y: 0, z: 0}
+  drops:
+  - item: {fileID: 9044317173839852587, guid: a59af445679d3084a94fc650f7b21978, type: 3}
+    chance: 45
+  - item: {fileID: 6259728070107275692, guid: b39e742784da42d41b71d424907c12a6, type: 3}
+    chance: 14

@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
 
     private int currentHealth;
     private float invincibleUntil = 0.0f;
+    private Vector3 lastHitFrom;
 
     void Awake()
     {
@@ -32,6 +33,11 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        TakeDamage(amount, transform.position);
+    }
+
+    public void TakeDamage(int amount, Vector3 hitFrom)
+    {
         if (currentHealth <= 0)
             return;
         if (tag == "Player" && GameManager.god_mode)
@@ -39,6 +45,7 @@ public class Health : MonoBehaviour
         if (Time.time < invincibleUntil)
             return;
         invincibleUntil = Time.time + invincibleTime;
+        lastHitFrom = hitFrom;
 
         currentHealth -= amount;
 
@@ -80,9 +87,14 @@ public class Health : MonoBehaviour
         return maxHealth;
     }
 
+    public Vector3 GetLastHitFrom()
+    {
+        return lastHitFrom;
+    }
+
     [ContextMenu("Take Damage")]
     private void TestDamage()
     {
-        TakeDamage(50);
+        TakeDamage(1);
     }
 }

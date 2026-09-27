@@ -1,7 +1,5 @@
 public class SwordShard : Projectile
 {
-    protected override void OnHitEnemy()
-    {
-        Destroy(gameObject);
-    }
+    // Shards fly through walls, only enemies stop them
+    protected override void OnHitSolid() { }
 }

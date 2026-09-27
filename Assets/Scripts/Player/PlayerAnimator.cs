@@ -45,12 +45,14 @@ public class PlayerAnimator : MonoBehaviour
         if (arrowKeyMovement.getIsStunned())
         {
             spriteRenderer.sprite = stunSprites[(int)facing];
+            currentSprites = null; // forces to redraw 
+            return;
         }
 
         if (arrowKeyMovement.GetIsAttacking())
         {
             spriteRenderer.sprite = attacks[(int)facing];
-            currentSprites = null; // forces SetDirection to redraw the walk sprite after the attack
+            currentSprites = null; // forces to redraw
             return;
         }
 

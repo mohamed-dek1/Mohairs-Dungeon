@@ -14,49 +14,13 @@ public class Hearts : MonoBehaviour
         UpdateHeartsUI(playerHealth.GetCurrentHealth());
     }
 
+    // health is in half hearts, so each heart slot holds 2
     private void UpdateHeartsUI(int health)
     {
-        if (health >= 80)
+        for (int i = 0; i < heartSlots.Length; i++)
         {
-            heartSlots[0].GetComponent<Image>().sprite = heartSprites[0];
-            heartSlots[1].GetComponent<Image>().sprite = heartSprites[0];
-            heartSlots[2].GetComponent<Image>().sprite = heartSprites[0];
-        } 
-        else if (health >= 70)
-        {
-            heartSlots[0].GetComponent<Image>().sprite = heartSprites[0];
-            heartSlots[1].GetComponent<Image>().sprite = heartSprites[0];
-            heartSlots[2].GetComponent<Image>().sprite = heartSprites[1];
-        } 
-        else if (health >= 60)
-        {
-            heartSlots[0].GetComponent<Image>().sprite = heartSprites[0];
-            heartSlots[1].GetComponent<Image>().sprite = heartSprites[0];
-            heartSlots[2].GetComponent<Image>().sprite = heartSprites[2];
-        } 
-        else if (health >= 50)
-        {
-            heartSlots[0].GetComponent<Image>().sprite = heartSprites[0];
-            heartSlots[1].GetComponent<Image>().sprite = heartSprites[1];
-            heartSlots[2].GetComponent<Image>().sprite = heartSprites[2];
-        } 
-        else if (health >= 40)
-        {
-            heartSlots[0].GetComponent<Image>().sprite = heartSprites[0];
-            heartSlots[1].GetComponent<Image>().sprite = heartSprites[2];
-            heartSlots[2].GetComponent<Image>().sprite = heartSprites[2];
-        } 
-        else if (health >= 30)
-        {
-            heartSlots[0].GetComponent<Image>().sprite = heartSprites[0];
-            heartSlots[1].GetComponent<Image>().sprite = heartSprites[2];
-            heartSlots[2].GetComponent<Image>().sprite = heartSprites[2];
-        } 
-        else if (health >= 20)
-        {
-            heartSlots[0].GetComponent<Image>().sprite = heartSprites[1];
-            heartSlots[1].GetComponent<Image>().sprite = heartSprites[2];
-            heartSlots[2].GetComponent<Image>().sprite = heartSprites[2];
+            int halves = Mathf.Clamp(health - i * 2, 0, 2);
+            heartSlots[i].GetComponent<Image>().sprite = heartSprites[2 - halves];
         }
     }
 }

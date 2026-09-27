@@ -53,16 +53,20 @@ public class ArrowKeyMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        foreach (GameObject weapon in weapons)
-            weapon.SetActive(false);
+
+        for (int i = 0; i < arrowOffset; i++)
+        {
+            weapons[i] = Instantiate(weapons[i], transform);
+            weapons[i].SetActive(false);
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X) && !isAttacking && !isArrowOnCooldown)
+        if (Input.GetKeyDown(KeyCode.X) && !isAttacking && !isArrowOnCooldown && !isStunned)
             StartCoroutine(Attack());
 
-        if (Input.GetKeyDown(KeyCode.Z) && !isArrowOnCooldown && !isAttacking && inventory.CurrentItem == ItemType.Bow && inventory.Coins > 0){
+        if (Input.GetKeyDown(KeyCode.Z) && !isArrowOnCooldown && !isAttacking && !isStunned && inventory.CurrentItem == ItemType.Bow && inventory.Coins > 0){
             StartCoroutine(ThrowArrow());
         }
 
@@ -75,6 +79,9 @@ public class ArrowKeyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (isStunned)
+            return;
+
         if (isAttacking)
         {
             rb.linearVelocity = Vector2.zero;
@@ -90,8 +97,8 @@ public class ArrowKeyMovement : MonoBehaviour
     {
         if (isStunned) return;
         StopCoroutine(nameof(StunRoutine));
-        Vector2 forceDirection = -GetDirectionVector(directionFacing);
-        StartCoroutine(StunRoutine(forceDirection, knockbackForce)); // Stun duration: 1 second
+        Vector2 forceDirection = GetKnockbackDirection();
+        StartCoroutine(StunRoutine(forceDirection, knockbackForce));
     }
 
     private IEnumerator StunRoutine(Vector2 forceDirection, float forceStrength)
@@ -132,7 +139,6 @@ public class ArrowKeyMovement : MonoBehaviour
         int maxHealth = 0;
         if (TryGetComponent(out Health healthScript))
         {
-            // Successfully found the script! You can safely use it here.
             health = healthScript.GetCurrentHealth();
             maxHealth = healthScript.GetMaxHealth();
         }
@@ -164,6 +170,19 @@ public class ArrowKeyMovement : MonoBehaviour
             return Vector2.left;
         else
             return Vector2.right;
+    }
+
+    private Vector2 GetKnockbackDirection()
+    {
+        Vector2 away = transform.position - GetComponent<Health>().GetLastHitFrom();
+
+        if (away == Vector2.zero)
+            return -GetDirectionVector(directionFacing);
+
+        if (Mathf.Abs(away.x) > Mathf.Abs(away.y))
+            return new Vector2(Mathf.Sign(away.x), 0);
+        else
+            return new Vector2(0, Mathf.Sign(away.y));
     }
 
     Vector2 GetInput()
@@ -232,7 +251,6 @@ public class ArrowKeyMovement : MonoBehaviour
     {
         float remainder = pos % gridSize;
 
-        // C# modulo can give negative
         if (remainder < 0) 
             remainder += gridSize;
 
