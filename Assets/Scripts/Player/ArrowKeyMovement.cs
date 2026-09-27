@@ -59,10 +59,10 @@ public class ArrowKeyMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking && !isArrowOnCooldown)
+        if (Input.GetKeyDown(KeyCode.X) && !isAttacking && !isArrowOnCooldown)
             StartCoroutine(Attack());
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && !isArrowOnCooldown && !isAttacking && inventory.CurrentItem == ItemType.Bow && inventory.Coins > 0){
+        if (Input.GetKeyDown(KeyCode.Z) && !isArrowOnCooldown && !isAttacking && inventory.CurrentItem == ItemType.Bow && inventory.Coins > 0){
             StartCoroutine(ThrowArrow());
         }
 
@@ -128,7 +128,16 @@ public class ArrowKeyMovement : MonoBehaviour
         GameObject weapon = weapons[(int)directionFacing + (4 * swordOffset)];
         weapon.SetActive(true);
 
-        if (activeBeam == null)
+        int health = 0;
+        int maxHealth = 0;
+        if (TryGetComponent(out Health healthScript))
+        {
+            // Successfully found the script! You can safely use it here.
+            health = healthScript.GetCurrentHealth();
+            maxHealth = healthScript.GetMaxHealth();
+        }
+
+        if (activeBeam == null && health == maxHealth)
             FireSwordBeam();
 
         yield return new WaitForSeconds(attackTime);
