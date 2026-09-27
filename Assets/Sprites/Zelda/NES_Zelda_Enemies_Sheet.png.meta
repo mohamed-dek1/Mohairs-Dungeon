@@ -103,10 +103,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 371
-        width: 8
-        height: 8
+        x: 0
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,10 +125,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_1
       rect:
         serializedVersion: 2
-        x: 21
-        y: 371
-        width: 6
-        height: 9
+        x: 16
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 371
-        width: 8
-        height: 8
+        x: 32
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +169,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_3
       rect:
         serializedVersion: 2
-        x: 53
-        y: 371
-        width: 6
-        height: 9
+        x: 48
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +191,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_4
       rect:
         serializedVersion: 2
-        x: 68
-        y: 371
-        width: 8
-        height: 8
+        x: 64
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_5
       rect:
         serializedVersion: 2
-        x: 85
-        y: 371
-        width: 6
-        height: 9
+        x: 80
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,10 +235,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_6
       rect:
         serializedVersion: 2
-        x: 100
-        y: 371
-        width: 8
-        height: 8
+        x: 96
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,10 +257,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_7
       rect:
         serializedVersion: 2
-        x: 117
-        y: 371
-        width: 6
-        height: 9
+        x: 112
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,10 +279,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_8
       rect:
         serializedVersion: 2
-        x: 132
-        y: 371
-        width: 8
-        height: 8
+        x: 128
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,10 +301,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_9
       rect:
         serializedVersion: 2
-        x: 149
-        y: 371
-        width: 6
-        height: 9
+        x: 144
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +323,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_10
       rect:
         serializedVersion: 2
-        x: 164
-        y: 371
-        width: 8
-        height: 8
+        x: 160
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,10 +345,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_11
       rect:
         serializedVersion: 2
-        x: 181
-        y: 371
-        width: 6
-        height: 9
+        x: 176
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,10 +367,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_12
       rect:
         serializedVersion: 2
-        x: 196
-        y: 371
-        width: 8
-        height: 8
+        x: 192
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,10 +389,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_13
       rect:
         serializedVersion: 2
-        x: 213
-        y: 371
-        width: 6
-        height: 9
+        x: 208
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -411,10 +411,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_14
       rect:
         serializedVersion: 2
-        x: 228
-        y: 371
-        width: 8
-        height: 8
+        x: 224
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,10 +433,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_15
       rect:
         serializedVersion: 2
-        x: 245
-        y: 371
-        width: 6
-        height: 9
+        x: 240
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -455,9 +455,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_16
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 352
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -477,10 +477,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_17
       rect:
         serializedVersion: 2
-        x: 17
+        x: 16
         y: 352
-        width: 14
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,9 +499,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_18
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 352
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -521,10 +521,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_19
       rect:
         serializedVersion: 2
-        x: 49
+        x: 48
         y: 352
-        width: 14
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -543,9 +543,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_20
       rect:
         serializedVersion: 2
-        x: 66
+        x: 64
         y: 352
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -565,10 +565,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_21
       rect:
         serializedVersion: 2
-        x: 81
+        x: 80
         y: 352
-        width: 14
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -587,9 +587,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_22
       rect:
         serializedVersion: 2
-        x: 98
+        x: 96
         y: 352
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -609,10 +609,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_23
       rect:
         serializedVersion: 2
-        x: 113
+        x: 112
         y: 352
-        width: 14
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -631,9 +631,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_24
       rect:
         serializedVersion: 2
-        x: 130
+        x: 128
         y: 352
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -653,10 +653,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_25
       rect:
         serializedVersion: 2
-        x: 145
+        x: 144
         y: 352
-        width: 14
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -675,9 +675,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_26
       rect:
         serializedVersion: 2
-        x: 162
+        x: 160
         y: 352
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -697,10 +697,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_27
       rect:
         serializedVersion: 2
-        x: 177
+        x: 176
         y: 352
-        width: 14
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -720,9 +720,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 340
+        y: 336
         width: 16
-        height: 8
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -741,10 +741,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_29
       rect:
         serializedVersion: 2
-        x: 19
-        y: 338
-        width: 10
-        height: 10
+        x: 16
+        y: 336
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -764,9 +764,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 340
+        y: 336
         width: 16
-        height: 8
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -785,10 +785,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_31
       rect:
         serializedVersion: 2
-        x: 51
-        y: 338
-        width: 10
-        height: 10
+        x: 48
+        y: 336
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -807,9 +807,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_32
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 320
-        width: 13
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -829,9 +829,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_33
       rect:
         serializedVersion: 2
-        x: 18
+        x: 16
         y: 320
-        width: 13
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -851,9 +851,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_34
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 320
-        width: 13
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -873,10 +873,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_35
       rect:
         serializedVersion: 2
-        x: 50
+        x: 48
         y: 320
-        width: 14
-        height: 15
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -895,9 +895,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_36
       rect:
         serializedVersion: 2
-        x: 66
+        x: 64
         y: 320
-        width: 13
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -917,9 +917,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_37
       rect:
         serializedVersion: 2
-        x: 82
+        x: 80
         y: 320
-        width: 13
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -939,9 +939,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_38
       rect:
         serializedVersion: 2
-        x: 97
+        x: 96
         y: 320
-        width: 13
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -961,10 +961,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_39
       rect:
         serializedVersion: 2
-        x: 114
+        x: 112
         y: 320
-        width: 14
-        height: 15
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -983,10 +983,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_40
       rect:
         serializedVersion: 2
-        x: 5
-        y: 308
-        width: 5
-        height: 8
+        x: 0
+        y: 304
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1005,10 +1005,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_41
       rect:
         serializedVersion: 2
-        x: 20
-        y: 308
-        width: 8
-        height: 8
+        x: 16
+        y: 304
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1027,10 +1027,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_42
       rect:
         serializedVersion: 2
-        x: 36
-        y: 309
-        width: 8
-        height: 5
+        x: 32
+        y: 304
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1050,9 +1050,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
-        width: 30
-        height: 48
+        y: 288
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1071,9 +1071,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_44
       rect:
         serializedVersion: 2
-        x: 17
+        x: 16
         y: 288
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1093,9 +1093,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_45
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 288
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1115,9 +1115,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_46
       rect:
         serializedVersion: 2
-        x: 49
+        x: 48
         y: 288
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1137,10 +1137,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_47
       rect:
         serializedVersion: 2
-        x: 1
-        y: 225
-        width: 14
-        height: 31
+        x: 0
+        y: 272
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1159,9 +1159,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_48
       rect:
         serializedVersion: 2
-        x: 20
-        y: 240
-        width: 7
+        x: 16
+        y: 272
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1181,9 +1181,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_49
       rect:
         serializedVersion: 2
-        x: 36
-        y: 240
-        width: 7
+        x: 0
+        y: 256
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1203,9 +1203,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_50
       rect:
         serializedVersion: 2
-        x: 52
+        x: 0
         y: 240
-        width: 7
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1225,10 +1225,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_51
       rect:
         serializedVersion: 2
-        x: 64
-        y: 244
-        width: 64
-        height: 7
+        x: 16
+        y: 240
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1247,10 +1247,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_52
       rect:
         serializedVersion: 2
-        x: 17
-        y: 225
-        width: 15
-        height: 14
+        x: 32
+        y: 240
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1269,8 +1269,8 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_53
       rect:
         serializedVersion: 2
-        x: 0
-        y: 208
+        x: 48
+        y: 240
         width: 16
         height: 16
       alignment: 0
@@ -1291,10 +1291,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_54
       rect:
         serializedVersion: 2
-        x: 4
-        y: 195
-        width: 8
-        height: 10
+        x: 64
+        y: 240
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1313,10 +1313,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_55
       rect:
         serializedVersion: 2
-        x: 20
-        y: 195
-        width: 8
-        height: 10
+        x: 80
+        y: 240
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1335,10 +1335,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_56
       rect:
         serializedVersion: 2
-        x: 36
-        y: 195
-        width: 8
-        height: 10
+        x: 96
+        y: 240
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1357,10 +1357,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_57
       rect:
         serializedVersion: 2
-        x: 52
-        y: 195
-        width: 8
-        height: 10
+        x: 112
+        y: 240
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1379,10 +1379,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_58
       rect:
         serializedVersion: 2
-        x: 4
-        y: 178
-        width: 8
-        height: 12
+        x: 0
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1401,10 +1401,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_59
       rect:
         serializedVersion: 2
-        x: 20
-        y: 177
-        width: 8
-        height: 14
+        x: 16
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1423,10 +1423,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_60
       rect:
         serializedVersion: 2
-        x: 36
-        y: 178
-        width: 8
-        height: 12
+        x: 0
+        y: 208
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1445,10 +1445,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_61
       rect:
         serializedVersion: 2
-        x: 52
-        y: 177
-        width: 8
-        height: 14
+        x: 0
+        y: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1467,10 +1467,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_62
       rect:
         serializedVersion: 2
-        x: 0
-        y: 114
+        x: 16
+        y: 192
         width: 16
-        height: 62
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1489,9 +1489,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_63
       rect:
         serializedVersion: 2
-        x: 17
-        y: 160
-        width: 15
+        x: 32
+        y: 192
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1511,9 +1511,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_64
       rect:
         serializedVersion: 2
-        x: 33
-        y: 160
-        width: 31
+        x: 48
+        y: 192
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1533,9 +1533,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_65
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
-        width: 31
+        x: 0
+        y: 176
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1555,9 +1555,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_66
       rect:
         serializedVersion: 2
-        x: 97
-        y: 160
-        width: 15
+        x: 16
+        y: 176
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1577,9 +1577,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_67
       rect:
         serializedVersion: 2
-        x: 113
-        y: 160
-        width: 31
+        x: 32
+        y: 176
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1599,10 +1599,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_68
       rect:
         serializedVersion: 2
-        x: 144
-        y: 160
+        x: 48
+        y: 176
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1621,10 +1621,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_69
       rect:
         serializedVersion: 2
-        x: 17
-        y: 128
-        width: 15
-        height: 15
+        x: 0
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1643,10 +1643,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_70
       rect:
         serializedVersion: 2
-        x: 32
-        y: 114
-        width: 32
-        height: 30
+        x: 16
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1665,9 +1665,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_71
       rect:
         serializedVersion: 2
-        x: 65
-        y: 128
-        width: 14
+        x: 32
+        y: 160
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1687,10 +1687,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_72
       rect:
         serializedVersion: 2
-        x: 81
-        y: 128
-        width: 15
-        height: 15
+        x: 48
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1709,9 +1709,9 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_73
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
-        width: 32
+        x: 64
+        y: 160
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1731,10 +1731,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_74
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 192
-        height: 79
+        x: 80
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1753,8 +1753,8 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_75
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
+        x: 96
+        y: 160
         width: 16
         height: 16
       alignment: 0
@@ -1775,8 +1775,8 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_76
       rect:
         serializedVersion: 2
-        x: 48
-        y: 32
+        x: 112
+        y: 160
         width: 16
         height: 16
       alignment: 0
@@ -1797,8 +1797,8 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_77
       rect:
         serializedVersion: 2
-        x: 80
-        y: 32
+        x: 128
+        y: 160
         width: 16
         height: 16
       alignment: 0
@@ -1819,8 +1819,8 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_78
       rect:
         serializedVersion: 2
-        x: 112
-        y: 32
+        x: 144
+        y: 160
         width: 16
         height: 16
       alignment: 0
@@ -1841,8 +1841,8 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_79
       rect:
         serializedVersion: 2
-        x: 144
-        y: 32
+        x: 0
+        y: 144
         width: 16
         height: 16
       alignment: 0
@@ -1863,8 +1863,8 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_80
       rect:
         serializedVersion: 2
-        x: 176
-        y: 32
+        x: 0
+        y: 128
         width: 16
         height: 16
       alignment: 0
@@ -1885,10 +1885,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_81
       rect:
         serializedVersion: 2
-        x: 194
-        y: 48
-        width: 13
-        height: 32
+        x: 16
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1907,10 +1907,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_82
       rect:
         serializedVersion: 2
-        x: 210
-        y: 48
-        width: 13
-        height: 32
+        x: 32
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1929,10 +1929,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_83
       rect:
         serializedVersion: 2
-        x: 226
-        y: 48
-        width: 13
-        height: 32
+        x: 48
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1951,10 +1951,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_84
       rect:
         serializedVersion: 2
-        x: 242
-        y: 48
-        width: 13
-        height: 32
+        x: 64
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1973,10 +1973,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_85
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 30
-        height: 47
+        x: 80
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1995,10 +1995,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_86
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 96
+        y: 128
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2017,10 +2017,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_87
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 112
+        y: 128
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2039,10 +2039,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_88
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 0
+        y: 112
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2061,10 +2061,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_89
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
+        x: 16
+        y: 112
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2083,10 +2083,10 @@ TextureImporter:
       name: NES_Zelda_Enemies_Sheet_90
       rect:
         serializedVersion: 2
-        x: 160
-        y: 32
+        x: 32
+        y: 112
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2097,6 +2097,1392 @@ TextureImporter:
       bones: []
       spriteID: ea0d5c2a1d2a443ce915f73d7cf18351
       internalID: -1119061818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_91
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd186d2c63b2845f4b9621436e583835
+      internalID: 1534603629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_92
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd97d420545fe4fa9a46d9adf2ed0d23
+      internalID: 553063267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_93
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a62b6d4a585c4704b569a01ff092b0c
+      internalID: 1659787385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_94
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a65d467a6eed4de98dc0a0e3e73b5bb
+      internalID: 153955578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_95
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c25242b672740f096d9bd88e8d785b
+      internalID: 274844820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_96
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 466d1fef44b2a4ae08e6ab7d9ba8b130
+      internalID: -377975319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_97
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 456b44406567241d585b6a428c5183f1
+      internalID: -926499349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_98
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e6a9143c2d147fba286d0d053dead6
+      internalID: 548897706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_99
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8b340248c1c45dc96bc6b0dc6d81f3
+      internalID: -1141219087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_100
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51957f354af54a08acc83e6cb4b3e1c
+      internalID: 1533755109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_101
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f9262ea0bfd4421a83f86f374d891be
+      internalID: 1550070040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_102
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8521adbee0288444b8e845476941c86e
+      internalID: -460068377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_103
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7817be8e1dff94b44a2ecc8af21d5e1c
+      internalID: 1477308225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_104
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd39206607592469eb6554f30eafc10e
+      internalID: 2078642245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_105
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4666fbc1b93b2492b8ddb311c87ecd71
+      internalID: -828309980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_106
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3c4814aa8084a25950cde3810a697b
+      internalID: 12812555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_107
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2165fbc061644ad9ce97d82ec4f159
+      internalID: 531253081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_108
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74770ad3f4217428b901422476a67dca
+      internalID: 1009396916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_109
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66bffdffd21c744b68efe8ccc23025bb
+      internalID: 1553885697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_110
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c37aead3d2bb044aa927074358941829
+      internalID: 1698728526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_111
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26c4569d145474657ac99b80d8006267
+      internalID: -385388555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_112
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef66b000d1031466983ce7a1dc983e51
+      internalID: -1331304205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_113
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 988bca27b75bb49c48f1e655e14bd8b7
+      internalID: 1295186580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_114
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d184fb71e9bc041559d62b6e6af6dd12
+      internalID: -1924172304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_115
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef09b4f67a804b4ab49d2834a558746
+      internalID: 2094334152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_116
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf92a97beeae43858cf0f76913086d7
+      internalID: 900856389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_117
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48f9b7fa70b104b979a88a56320ee7b9
+      internalID: -1522907357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_118
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 575f237945db147c2ae092f02cfe5b79
+      internalID: 405447589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_119
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56261945776b14712887047597a9006a
+      internalID: 880943061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_120
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31ece69d08b724fbb8c6dbfbedcf7ecd
+      internalID: 1077905758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_121
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a878ab8373f0f411abb55b826b046512
+      internalID: 773807673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_122
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f42976310c54435480794e3c96b7bb7
+      internalID: 135125049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_123
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2afe3a9bccac84a23a2328ed9c75c2d7
+      internalID: -414090640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_124
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e80f61ddde0e46629599c6ae1ce6409
+      internalID: 623630993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_125
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 711b621d71c1449d8ab588541653638f
+      internalID: -2055426379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_126
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e572363b056c34efdb6e6dfff24e4361
+      internalID: 571962984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_127
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e8f6bdeab7f6491e82c3336cf1c3903
+      internalID: -118578160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_128
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f99cffe297e7a4c48bb9da87cbb57a64
+      internalID: -2048626642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_129
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f9fd7203db143619674740d640dd6f
+      internalID: -1129522174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_130
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92b4233c1251457ba9b56011084c211
+      internalID: 31205470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_131
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec613176f123442a18760104d8985372
+      internalID: -2042612279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_132
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07029527d10fb4e9d8e204b20e5f8256
+      internalID: 817154836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_133
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a8dfb2636e74c2b9b509a6d8a38700
+      internalID: -1705625174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_134
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ac18cf9868a46afb4a9d51400cdab6
+      internalID: -902888864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_135
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb438cdffd43421a84293bd11bd7d8e
+      internalID: -1909998243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_136
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6014b74bdee1d41d9bea3f4894e33eb6
+      internalID: -1239418065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_137
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 017448e3b8a694534aafdb6de8232ee7
+      internalID: 1416911729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_138
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85571df1085254a59a9b6cff8a980d32
+      internalID: -18131627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_139
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 465876a04bfbd42839eb979a4cc4c106
+      internalID: -987025837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_140
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8567898dde3424b44b9c84416db2feb2
+      internalID: 75401015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_141
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408f79f102e484dc4949e053fa54b396
+      internalID: -1102308353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_142
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e88d204d675614e02906069dbcc4d1f9
+      internalID: -555447967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_143
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9e02abad57e44b5abda9e19005934d
+      internalID: -1775722705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_144
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86453f1d46d37423aa6ca142b078bc13
+      internalID: 206314901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_145
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c375942d0c7a4514abf538e11965ef2
+      internalID: -672946056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_146
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 158630608b0ca4cf999ac3185eb62f61
+      internalID: 2122931325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_147
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1a4cada9878148088860670c6f41bc1
+      internalID: 1231583156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_148
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba21b5ae97deb4976a30be0b0f1818d8
+      internalID: -2110756504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_149
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e887121036b4d289144f4ee8c6aca4
+      internalID: -192303070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_150
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0296b30217404863bd647d81194adae
+      internalID: -1195000761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_151
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c6f7267f818740229b6f815a90f3a02
+      internalID: -933875150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_152
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c884710c70f44739b54c3184863cdee
+      internalID: 489169648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES_Zelda_Enemies_Sheet_153
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18466b32ec90a434e9a3db6f9cfd11a3
+      internalID: 1523473644
       vertices: []
       indices: 
       edges: []
@@ -2115,16 +3501,70 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       NES_Zelda_Enemies_Sheet_0: -3255944389184253973
       NES_Zelda_Enemies_Sheet_1: -1552903423
       NES_Zelda_Enemies_Sheet_10: 1890626766
+      NES_Zelda_Enemies_Sheet_100: 1533755109
+      NES_Zelda_Enemies_Sheet_101: 1550070040
+      NES_Zelda_Enemies_Sheet_102: -460068377
+      NES_Zelda_Enemies_Sheet_103: 1477308225
+      NES_Zelda_Enemies_Sheet_104: 2078642245
+      NES_Zelda_Enemies_Sheet_105: -828309980
+      NES_Zelda_Enemies_Sheet_106: 12812555
+      NES_Zelda_Enemies_Sheet_107: 531253081
+      NES_Zelda_Enemies_Sheet_108: 1009396916
+      NES_Zelda_Enemies_Sheet_109: 1553885697
       NES_Zelda_Enemies_Sheet_11: -340351798
+      NES_Zelda_Enemies_Sheet_110: 1698728526
+      NES_Zelda_Enemies_Sheet_111: -385388555
+      NES_Zelda_Enemies_Sheet_112: -1331304205
+      NES_Zelda_Enemies_Sheet_113: 1295186580
+      NES_Zelda_Enemies_Sheet_114: -1924172304
+      NES_Zelda_Enemies_Sheet_115: 2094334152
+      NES_Zelda_Enemies_Sheet_116: 900856389
+      NES_Zelda_Enemies_Sheet_117: -1522907357
+      NES_Zelda_Enemies_Sheet_118: 405447589
+      NES_Zelda_Enemies_Sheet_119: 880943061
       NES_Zelda_Enemies_Sheet_12: -803236119
+      NES_Zelda_Enemies_Sheet_120: 1077905758
+      NES_Zelda_Enemies_Sheet_121: 773807673
+      NES_Zelda_Enemies_Sheet_122: 135125049
+      NES_Zelda_Enemies_Sheet_123: -414090640
+      NES_Zelda_Enemies_Sheet_124: 623630993
+      NES_Zelda_Enemies_Sheet_125: -2055426379
+      NES_Zelda_Enemies_Sheet_126: 571962984
+      NES_Zelda_Enemies_Sheet_127: -118578160
+      NES_Zelda_Enemies_Sheet_128: -2048626642
+      NES_Zelda_Enemies_Sheet_129: -1129522174
       NES_Zelda_Enemies_Sheet_13: -2064975705
+      NES_Zelda_Enemies_Sheet_130: 31205470
+      NES_Zelda_Enemies_Sheet_131: -2042612279
+      NES_Zelda_Enemies_Sheet_132: 817154836
+      NES_Zelda_Enemies_Sheet_133: -1705625174
+      NES_Zelda_Enemies_Sheet_134: -902888864
+      NES_Zelda_Enemies_Sheet_135: -1909998243
+      NES_Zelda_Enemies_Sheet_136: -1239418065
+      NES_Zelda_Enemies_Sheet_137: 1416911729
+      NES_Zelda_Enemies_Sheet_138: -18131627
+      NES_Zelda_Enemies_Sheet_139: -987025837
       NES_Zelda_Enemies_Sheet_14: 88543406
+      NES_Zelda_Enemies_Sheet_140: 75401015
+      NES_Zelda_Enemies_Sheet_141: -1102308353
+      NES_Zelda_Enemies_Sheet_142: -555447967
+      NES_Zelda_Enemies_Sheet_143: -1775722705
+      NES_Zelda_Enemies_Sheet_144: 206314901
+      NES_Zelda_Enemies_Sheet_145: -672946056
+      NES_Zelda_Enemies_Sheet_146: 2122931325
+      NES_Zelda_Enemies_Sheet_147: 1231583156
+      NES_Zelda_Enemies_Sheet_148: -2110756504
+      NES_Zelda_Enemies_Sheet_149: -192303070
       NES_Zelda_Enemies_Sheet_15: -1624198599
+      NES_Zelda_Enemies_Sheet_150: -1195000761
+      NES_Zelda_Enemies_Sheet_151: -933875150
+      NES_Zelda_Enemies_Sheet_152: 489169648
+      NES_Zelda_Enemies_Sheet_153: 1523473644
       NES_Zelda_Enemies_Sheet_16: 174430218
       NES_Zelda_Enemies_Sheet_17: -800239479
       NES_Zelda_Enemies_Sheet_18: 1509608459
@@ -2208,6 +3648,15 @@ TextureImporter:
       NES_Zelda_Enemies_Sheet_89: 591527866
       NES_Zelda_Enemies_Sheet_9: -1388961915
       NES_Zelda_Enemies_Sheet_90: -1119061818
+      NES_Zelda_Enemies_Sheet_91: 1534603629
+      NES_Zelda_Enemies_Sheet_92: 553063267
+      NES_Zelda_Enemies_Sheet_93: 1659787385
+      NES_Zelda_Enemies_Sheet_94: 153955578
+      NES_Zelda_Enemies_Sheet_95: 274844820
+      NES_Zelda_Enemies_Sheet_96: -377975319
+      NES_Zelda_Enemies_Sheet_97: -926499349
+      NES_Zelda_Enemies_Sheet_98: 548897706
+      NES_Zelda_Enemies_Sheet_99: -1141219087
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

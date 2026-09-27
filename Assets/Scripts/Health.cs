@@ -9,8 +9,10 @@ public class Health : MonoBehaviour
     public UnityEvent onTakeDamage;
 
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private float invincibleTime = 0.0f;
 
     private int currentHealth;
+    private float invincibleUntil = 0.0f;
 
     void Awake()
     {
@@ -22,6 +24,10 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
             return;
 
+        if (Time.time < invincibleUntil)
+            return;
+
+        invincibleUntil = Time.time + invincibleTime;
         currentHealth -= amount;
 
         if (onTakeDamage != null)
@@ -49,6 +55,7 @@ public class Health : MonoBehaviour
     public void ResetHealth()
     {
         currentHealth = maxHealth;
+        invincibleUntil = 0.0f;
     }
 
     public int GetCurrentHealth()
