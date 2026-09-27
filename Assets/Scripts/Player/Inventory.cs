@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 
 public enum ItemType
 {
@@ -75,6 +76,26 @@ public class Inventory : MonoBehaviour
     {
         if (item == ItemType.None || HasItem(item))
             currentItem = item;
+    }
+
+    public void SelectNextUnlockedItem()
+    {
+        ItemType[] allItems = (ItemType[])Enum.GetValues(typeof(ItemType));
+        if (allItems.Length == 0) return;
+
+        int currentIndex = Array.IndexOf(allItems, currentItem);
+
+        for (int i = 1; i <= allItems.Length; i++)
+        {
+            int nextIndex = (currentIndex + i) % allItems.Length;
+            ItemType nextItem = allItems[nextIndex];
+
+            if (nextItem == ItemType.None || HasItem(nextItem))
+            {
+                SetCurrentItem(nextItem);
+                break;
+            }
+        }
     }
 
     // COINS AND BOMBS //
