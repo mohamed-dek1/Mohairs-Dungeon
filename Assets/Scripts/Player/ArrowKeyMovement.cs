@@ -18,11 +18,14 @@ public class ArrowKeyMovement : MonoBehaviour
     // ==========================
     [SerializeField] private GameObject[] weapons; // Up, Down, Left, Right
     [SerializeField] private GameObject swordBeamPrefab;
+    [SerializeField] private float hitStunDuration = 1.0f;
+    [SerializeField] private float knockbackForce = 0.8f;
 
     // ==========================
     // Private fields
     // ==========================
     private bool isAttacking = false;
+    private bool isStunned = false;
     private Direction directionFacing = Direction.Down;
     private int swordOffset = 0;
     private GameObject activeBeam;
@@ -66,6 +69,42 @@ public class ArrowKeyMovement : MonoBehaviour
         rb.linearVelocity = current_input;
     }
 
+    [ContextMenu("Trigger Stun")]
+    public void TriggerStun()
+    {
+        if (isStunned) return;
+        StopCoroutine(nameof(StunRoutine));
+        Vector2 forceDirection = -GetDirectionVector(directionFacing);
+        StartCoroutine(StunRoutine(forceDirection, knockbackForce)); // Stun duration: 1 second
+    }
+
+    private IEnumerator StunRoutine(Vector2 forceDirection, float forceStrength)
+    {
+        isStunned = true;
+        rb.linearVelocity = Vector2.zero;
+
+        rb.AddForce(forceDirection * forceStrength, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(hitStunDuration);
+
+        rb.linearVelocity = Vector2.zero;
+        isStunned = false;
+    }
+
+    IEnumerator ThrowArrow()
+    {
+        GameObject weapon = weapons[(int)directionFacing + (4 * swordOffset)];
+        weapon.SetActive(true);
+
+        if (activeBeam == null)
+            FireSwordBeam();
+
+        yield return new WaitForSeconds(attackTime);
+
+        weapon.SetActive(false);
+        isAttacking = false;
+    }
+    
     IEnumerator Attack()
     {
         isAttacking = true;

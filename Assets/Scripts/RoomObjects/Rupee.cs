@@ -6,6 +6,6 @@ public class Rupee : Collectable
 
     protected override void OnCollect(Inventory inventory)
     {
-        inventory.AddRupees(value);
+        inventory.AddCoins(value);
     }
 }

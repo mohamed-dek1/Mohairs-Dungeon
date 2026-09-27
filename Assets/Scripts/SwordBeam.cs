@@ -36,8 +36,8 @@ public class SwordBeam : Projectile
         {
             new Vector2(1, 1),   // NE
             new Vector2(-1, 1),  // NW
-            new Vector2(-1, -1), // SW
-            new Vector2(1, -1)   // SE
+            new Vector2(1, -1),  // SE
+            new Vector2(-1, -1)  // SW
         };
 
         for (int i = 0; i < directions.Length; i++)

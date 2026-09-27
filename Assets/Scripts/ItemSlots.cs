@@ -10,6 +10,8 @@ public class ItemSlots : MonoBehaviour
 
     public Sprite swordSprite;
     public Sprite bowSprite;
+    public Sprite bombSprite;
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,16 +24,42 @@ public class ItemSlots : MonoBehaviour
     {
         if (inventory != null)
         {
-            string currentWeapon = inventory.GetCurrentWeapon();
-            if (currentWeapon == "sword") {
-                slotAImage.GetComponent<Image>().enabled = true;
-                slotAImage.sprite = swordSprite;
+            ItemType itemType = inventory.CurrentItem;
+            switch (itemType)
+            {
+                case ItemType.Bomb:
+                    slotBImage.GetComponent<Image>().enabled = true;
+                    slotBImage.sprite = bombSprite;
+                    break;
+                case ItemType.Bow:
+                    slotBImage.GetComponent<Image>().enabled = true;
+                    slotBImage.sprite = bowSprite;
+                    break;
+                default:
+                    slotBImage.GetComponent<Image>().enabled = false;
+                    slotBImage.sprite = null;
+                    break;
             }
-            else if (currentWeapon == "bow") {
-                slotAImage.GetComponent<Image>().enabled = true;
-                slotAImage.sprite = bowSprite;
-            } else {
-                slotAImage.GetComponent<Image>().enabled = false;
+            
+            itemType = inventory.CurrentWeapon;
+            switch (itemType)
+            {
+                case ItemType.Sword:
+                    slotAImage.GetComponent<Image>().enabled = true;
+                    slotAImage.sprite = swordSprite;
+                    break;
+                case ItemType.Bow:
+                    slotAImage.GetComponent<Image>().enabled = true;
+                    slotAImage.sprite = bowSprite;
+                    break;
+                case ItemType.Bomb:
+                    slotAImage.GetComponent<Image>().enabled = true;
+                    slotAImage.sprite = bombSprite;
+                    break;
+                default:
+                    slotAImage.GetComponent<Image>().enabled = false;
+                    slotAImage.sprite = null;
+                    break;
             }
         }
     }
