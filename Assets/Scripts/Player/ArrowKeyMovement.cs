@@ -66,6 +66,11 @@ public class ArrowKeyMovement : MonoBehaviour
             StartCoroutine(ThrowArrow());
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
+        {
+            inventory.SelectNextUnlockedItem();
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             GameManager.god_mode = !GameManager.god_mode;
