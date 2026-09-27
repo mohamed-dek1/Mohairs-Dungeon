@@ -16,18 +16,22 @@ public class ArrowKeyMovement : MonoBehaviour
     // ==========================
     // Serialized fields
     // ==========================
-    [SerializeField] private GameObject[] weapons; // Up, Down, Left, Right
+    [SerializeField] private Inventory inventory;
+    [SerializeField] private GameObject[] weapons; // Up, Down, Left, Right, Arrow
     [SerializeField] private GameObject swordBeamPrefab;
     [SerializeField] private float hitStunDuration = 1.0f;
     [SerializeField] private float knockbackForce = 0.8f;
+    [SerializeField] private float arrowTimeout = 1.0f;
 
     // ==========================
     // Private fields
     // ==========================
     private bool isAttacking = false;
     private bool isStunned = false;
+    private bool isArrowOnCooldown = false;
     private Direction directionFacing = Direction.Down;
     private int swordOffset = 0;
+    private int arrowOffset = 4;
     private GameObject activeBeam;
 
 
@@ -52,8 +56,12 @@ public class ArrowKeyMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking && !isArrowOnCooldown)
             StartCoroutine(Attack());
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !isArrowOnCooldown && !isAttacking && inventory.CurrentItem == ItemType.Bow && inventory.Coins > 0){
+            StartCoroutine(ThrowArrow());
+        }
     }
 
     // Update is called once per frame
@@ -93,16 +101,17 @@ public class ArrowKeyMovement : MonoBehaviour
 
     IEnumerator ThrowArrow()
     {
-        GameObject weapon = weapons[(int)directionFacing + (4 * swordOffset)];
+        isArrowOnCooldown = true;
+        inventory.UseArrow();
+        GameObject weapon = Instantiate(weapons[arrowOffset], transform.position, Quaternion.identity);
         weapon.SetActive(true);
 
-        if (activeBeam == null)
-            FireSwordBeam();
+        if (weapon.TryGetComponent<Arrow>(out var arrow))
+            arrow.Launch(GetDirectionVector(directionFacing));
 
-        yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(arrowTimeout);
 
-        weapon.SetActive(false);
-        isAttacking = false;
+        isArrowOnCooldown = false;
     }
     
     IEnumerator Attack()
