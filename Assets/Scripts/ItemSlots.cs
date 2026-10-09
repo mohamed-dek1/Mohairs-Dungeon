@@ -11,6 +11,7 @@ public class ItemSlots : MonoBehaviour
     public Sprite swordSprite;
     public Sprite bowSprite;
     public Sprite bombSprite;
+    public Sprite boomerangSprite;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,6 +35,10 @@ public class ItemSlots : MonoBehaviour
                 case ItemType.Bow:
                     slotBImage.GetComponent<Image>().enabled = true;
                     slotBImage.sprite = bowSprite;
+                    break;
+                case ItemType.Boomerang:
+                    slotBImage.GetComponent<Image>().enabled = true;
+                    slotBImage.sprite = boomerangSprite;
                     break;
                 default:
                     slotBImage.GetComponent<Image>().enabled = false;

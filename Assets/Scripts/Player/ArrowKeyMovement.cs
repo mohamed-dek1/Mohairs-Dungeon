@@ -22,6 +22,7 @@ public class ArrowKeyMovement : MonoBehaviour
     [SerializeField] private float hitStunDuration = 1.0f;
     [SerializeField] private float knockbackForce = 0.8f;
     [SerializeField] private float arrowTimeout = 1.0f;
+    [SerializeField] private float boomerangTimeout = 1.0f;
 
     // ==========================
     // Private fields
@@ -32,7 +33,9 @@ public class ArrowKeyMovement : MonoBehaviour
     private Direction directionFacing = Direction.Down;
     private int swordOffset = 0;
     private int arrowOffset = 4;
+    private int boomerangOffset = 5;
     private GameObject activeBeam;
+    private GameObject activeBoomerang;
 
     public bool getIsStunned()
     {
@@ -66,8 +69,15 @@ public class ArrowKeyMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && !isAttacking && !isArrowOnCooldown && !isStunned)
             StartCoroutine(Attack());
 
-        if (Input.GetKeyDown(KeyCode.Z) && !isArrowOnCooldown && !isAttacking && !isStunned && inventory.CurrentItem == ItemType.Bow && inventory.Coins > 0){
-            StartCoroutine(ThrowArrow());
+        if (Input.GetKeyDown(KeyCode.Z) && !isAttacking && !isStunned){
+            if (inventory.CurrentItem == ItemType.Bow && inventory.Coins > 0 && !isArrowOnCooldown)
+            {
+                StartCoroutine(ThrowArrow());
+            } else if(inventory.CurrentItem == ItemType.Boomerang && activeBoomerang == null)
+            {
+                StartCoroutine(ThrowBoomerang());
+            }
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
@@ -132,6 +142,17 @@ public class ArrowKeyMovement : MonoBehaviour
         yield return new WaitForSeconds(arrowTimeout);
 
         isArrowOnCooldown = false;
+    }
+
+    IEnumerator ThrowBoomerang()
+    {
+        activeBoomerang = Instantiate(weapons[boomerangOffset], transform.position, Quaternion.identity);
+        activeBoomerang.SetActive(true);
+
+        if (activeBoomerang.TryGetComponent<Boomerang>(out var boomerang))
+            boomerang.Launch(GetDirectionVector(directionFacing));
+
+        yield return new WaitForSeconds(boomerangTimeout);
     }
     
     IEnumerator Attack()

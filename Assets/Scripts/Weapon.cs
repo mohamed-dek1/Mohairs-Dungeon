@@ -4,7 +4,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] protected int damage = 1;
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.transform.root.CompareTag("Player"))
             return;

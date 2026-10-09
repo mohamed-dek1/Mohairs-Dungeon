@@ -68803,10 +68803,12 @@ MonoBehaviour:
   - {fileID: 3728075549327250440, guid: 067c3f4eddf86834cbb61ab5696b041f, type: 3}
   - {fileID: 2523511319713137318, guid: d9f8dbe019955fa49b22d317eae92af2, type: 3}
   - {fileID: 3127154363805870578, guid: 8eb6bcc10dfbe2943af12fc9405537b5, type: 3}
+  - {fileID: 7905506082428660689, guid: bce8abe188e633b4a811623851596eb3, type: 3}
   swordBeamPrefab: {fileID: 4969453698221294676, guid: 7f06b91e652dd1d4682ab1635ac992c2, type: 3}
   hitStunDuration: 1
   knockbackForce: 0.8
   arrowTimeout: 1
+  boomerangTimeout: 1
 --- !u!65 &666988743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68856,7 +68858,7 @@ MonoBehaviour:
   coins: 0
   bombs: 0
   currentWeapon: 1
-  currentItem: 2
+  currentItem: 4
 --- !u!114 &666988746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108737,6 +108739,7 @@ MonoBehaviour:
   swordSprite: {fileID: 21300238, guid: 45afd34443b96473598b76e2b1778b4e, type: 3}
   bowSprite: {fileID: 21300326, guid: 45afd34443b96473598b76e2b1778b4e, type: 3}
   bombSprite: {fileID: 21300292, guid: 45afd34443b96473598b76e2b1778b4e, type: 3}
+  boomerangSprite: {fileID: -1511125415, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
 --- !u!4 &1097792571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8470866191112943300, guid: b993dd2680337456faf03cef89dc67f5, type: 3}
