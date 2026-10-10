@@ -17,7 +17,9 @@ public abstract class Enemy : RoomObject
     protected Vector3 startPosition;
     protected bool defeated = false;
 
-    void OnTriggerEnter(Collider other)
+    GameManager gameManager;
+
+    void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -49,6 +51,7 @@ public abstract class Enemy : RoomObject
         rb = GetComponent<Rigidbody>();
         health = GetComponent<Health>();
         health.OnDeath += Defeat;
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         startPosition = transform.position;
         base.Init(handler);
@@ -76,6 +79,8 @@ public abstract class Enemy : RoomObject
     {
         defeated = true;
         room.EnemyDefeated();
+        gameManager.PlaySFX(gameManager.enemyDeath);
+        
         gameObject.SetActive(false);
     }
 }

@@ -15,9 +15,12 @@ public class Health : MonoBehaviour
     private float invincibleUntil = 0.0f;
     private Vector3 lastHitFrom;
 
+    GameManager gameManager;
+
     void Awake()
     {
         currentHealth = maxHealth;
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     void Update()
@@ -58,6 +61,11 @@ public class Health : MonoBehaviour
 
             if (OnDeath != null)
                 OnDeath();
+        }
+
+        if (tag == "Player")
+        {
+            gameManager.PlaySFX(gameManager.playerHurt);
         }
     }
 

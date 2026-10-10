@@ -4,6 +4,13 @@ public abstract class Collectable : RoomObject
 {
     protected bool collected = false;
 
+    GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
+
     protected override void RoomEntered()
     {
         if (collected)
@@ -19,6 +26,7 @@ public abstract class Collectable : RoomObject
 
         collected = true;
         OnCollect(inventory);
+        gameManager.PlaySFX(gameManager.itemPickup);
         gameObject.SetActive(false);
     }
 
