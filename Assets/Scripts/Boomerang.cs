@@ -5,6 +5,7 @@ public class Boomerang : Projectile
     private float launchTime;
     private bool isReturning = false;
     private Transform playerTransform;
+    private Transform carriedItem = null;
 
     [SerializeField] float returnDelay = 0.5f;
     [SerializeField] float rotationSpeed = 720f; // degrees per second
@@ -48,12 +49,31 @@ public class Boomerang : Projectile
             rb.linearVelocity = directionToPlayer * speed;
 
             float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
-            if (distanceToPlayer < 0.01f)
+            if (distanceToPlayer < 0.001f)
             {
-                Destroy(gameObject);
+                Catch();
             }
         }
 
+        if (carriedItem != null)
+        {
+            carriedItem.position = transform.position;
+        }
+
+    }
+
+    private void Catch()
+    {
+        if (carriedItem != null)
+        {
+            // Trigger pickup logic if the item has an ItemPickup component
+            if (carriedItem.TryGetComponent<Collectable>(out var item))
+            {
+                item.Collect(playerTransform.GetComponent<Inventory>());
+            }
+        }
+
+        Destroy(gameObject);
     }
 
     protected override void OnHitSolid()
@@ -79,6 +99,19 @@ public class Boomerang : Projectile
             if (isReturning)
             {
                 Destroy(gameObject);
+            }
+            return;
+        }
+
+        if (other.CompareTag("Collectable"))
+        {
+            if (carriedItem == null)
+            {
+                carriedItem = other.transform;
+                
+                // if (other.TryGetComponent<Collider>(out var col)) col.enabled = false;
+
+                isReturning = true;
             }
             return;
         }

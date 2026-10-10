@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7006152735791425051}
   m_Layer: 0
   m_Name: Key
-  m_TagString: rupee
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

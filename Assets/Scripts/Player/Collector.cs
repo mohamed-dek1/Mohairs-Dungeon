@@ -18,9 +18,9 @@ public class Collector : MonoBehaviour
         if (inventory == null)
             return;
 
-        if (other.TryGetComponent<Collectable>(out Collectable collectible))
+        if (other.TryGetComponent<Collectable>(out Collectable collectable))
         {
-            collectible.Collect(inventory);
+            collectable.Collect(inventory);
         }
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5645164027593700333}
   m_Layer: 0
   m_Name: Tile_Up_Trigger
-  m_TagString: UpDoor
+  m_TagString: DownDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

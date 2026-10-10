@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - rupee
   - enemy
   - sword
   - beam sword
@@ -15,6 +14,7 @@ TagManager:
   - UpDoor
   - DownDoor
   - Water
+  - Collectable
   layers:
   - Default
   - TransparentFX
