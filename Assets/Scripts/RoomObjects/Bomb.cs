@@ -8,13 +8,22 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float damageRadius = 5f;
     [SerializeField] private int damage = 1;
     [SerializeField] private float dustLifetime = 2f;
-    [SerializeField] private float bombTimer = 1.0f;
-    [SerializeField] private float xOffset = 1f;
-    [SerializeField] private float yOffset = 1f;
+    [SerializeField] private float bombTimer = 0.5f;
+
+    GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
 
 
     public IEnumerator Explode()
     {
+        gameManager.PlaySFX(gameManager.bombExplosion);
+        
+        yield return new WaitForSeconds(bombTimer);
+
         foreach (GameObject dustChild in dustClouds)
         {
             if (dustChild != null)
@@ -40,8 +49,6 @@ public class Bomb : MonoBehaviour
                 }
             }
         }
-
-        yield return new WaitForSeconds(bombTimer);
 
         Destroy(gameObject);
     }

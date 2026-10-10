@@ -10,8 +10,11 @@ public class LockedDoor : RoomObject
 
     private bool isOpen = false;
 
+    GameManager gameManager;
+
     void Awake()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         boxcollider = GetComponent<BoxCollider>();
         spriterenderer = GetComponent<SpriteRenderer>();
     }
@@ -41,6 +44,8 @@ public class LockedDoor : RoomObject
     {
         if (isOpen)
             return;
+
+        gameManager.PlaySFX(gameManager.doorOpen);
 
         isOpen = true;
         spriterenderer.sprite = openDoor;

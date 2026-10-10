@@ -939,9 +939,7 @@ MonoBehaviour:
   damageRadius: 0.8
   damage: 1
   dustLifetime: 1.5
-  bombTimer: 0.5
-  xOffset: 0
-  yOffset: 0
+  bombTimer: 0.8
 --- !u!1 &7991030004408536219
 GameObject:
   m_ObjectHideFlags: 0

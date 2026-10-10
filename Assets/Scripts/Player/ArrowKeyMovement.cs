@@ -24,7 +24,7 @@ public class ArrowKeyMovement : MonoBehaviour
     [SerializeField] private float knockbackDuration = 0.15625f;
     [SerializeField] private float arrowTimeout = 1.0f;
     [SerializeField] private float boomerangTimeout = 1.0f;
-    [SerializeField] private float bombTimer = 2.0f;
+    [SerializeField] private float bombCooldown = .25f;
 
     // ==========================
     // Private fields
@@ -148,10 +148,11 @@ public class ArrowKeyMovement : MonoBehaviour
         activeBomb = Instantiate(weapons[bombOffset], transform.position, Quaternion.identity);
         activeBomb.SetActive(true);
 
-        yield return new WaitForSeconds(bombTimer);
+        yield return new WaitForSeconds(bombCooldown);
 
         if (activeBomb.TryGetComponent<Bomb>(out var bomb))
             StartCoroutine(bomb.Explode());
+
     }
 
     IEnumerator ThrowArrow()
