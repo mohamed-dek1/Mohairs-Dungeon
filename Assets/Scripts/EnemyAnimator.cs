@@ -132,4 +132,14 @@ public class EnemyAnimator : MonoBehaviour
         else
             return spritesFaceRight;
     }
+
+    public void SetFrameRate(float newFrameRate)
+    {
+        frameRate = newFrameRate;
+    }
+
+    public float GetFrameRate()
+    {
+        return frameRate;
+    }
 }
