@@ -43,6 +43,9 @@ public abstract class GridWalk : Enemy
         // on center tile
         if (Vector2.Distance(currentPos, targetTile) < 0.01f)
         {
+             rb.position = targetTile;
+            currentPos = targetTile;
+
             moveDir = ChooseDirection();
 
             if (moveDir == Vector2.zero)
