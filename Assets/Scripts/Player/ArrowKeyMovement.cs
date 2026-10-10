@@ -19,8 +19,9 @@ public class ArrowKeyMovement : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] private GameObject[] weapons; // Up, Down, Left, Right, Arrow
     [SerializeField] private GameObject swordBeamPrefab;
-    [SerializeField] private float hitStunDuration = 1.0f;
-    [SerializeField] private float knockbackForce = 0.8f;
+    [SerializeField] private float hitStunDuration = 0.17f;
+    [SerializeField] private float knockbackSpeed = 20.0f;
+    [SerializeField] private float knockbackDuration = 0.15625f;
     [SerializeField] private float arrowTimeout = 1.0f;
     [SerializeField] private float boomerangTimeout = 1.0f;
 
@@ -111,21 +112,27 @@ public class ArrowKeyMovement : MonoBehaviour
     public void TriggerStun()
     {
         if (isStunned) return;
+
         StopCoroutine(nameof(StunRoutine));
+
         Vector2 forceDirection = GetKnockbackDirection();
-        StartCoroutine(StunRoutine(forceDirection, knockbackForce));
+        StartCoroutine(StunRoutine(forceDirection));
     }
 
-    private IEnumerator StunRoutine(Vector2 forceDirection, float forceStrength)
+    private IEnumerator StunRoutine(Vector2 forceDirection)
     {
         isStunned = true;
+
+        // Immediate knockback.
+        rb.linearVelocity = forceDirection * knockbackSpeed;
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        // Stop movement, player stunned briefly.
         rb.linearVelocity = Vector2.zero;
 
-        rb.AddForce(forceDirection * forceStrength, ForceMode.Impulse);
+        yield return new WaitForSeconds(hitStunDuration - knockbackDuration);
 
-        yield return new WaitForSeconds(hitStunDuration);
-
-        rb.linearVelocity = Vector2.zero;
         isStunned = false;
     }
 

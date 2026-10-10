@@ -19,7 +19,6 @@ public abstract class GridWalk : Enemy
     // Private fields
     // ==========================
     private float waitTimer;
-
     protected override void RoomEntered()
     {
         base.RoomEntered();
@@ -49,7 +48,18 @@ public abstract class GridWalk : Enemy
             if (moveDir == Vector2.zero)
                 return;
 
-            targetTile = targetTile + moveDir * tileSize;
+            if (IsBlocked(moveDir))
+            {
+                moveDir = -moveDir;
+
+                if (IsBlocked(moveDir))
+                {
+                    moveDir = Vector2.zero;
+                    return;
+                }
+            }
+
+            targetTile += moveDir * tileSize;
         }
 
         Vector2 nextPos = Vector2.MoveTowards(currentPos, targetTile, GetSpeed() * Time.fixedDeltaTime);
@@ -69,12 +79,24 @@ public abstract class GridWalk : Enemy
     // ==========================
     protected bool IsBlocked(Vector2 dir)
     {
-        Vector3 nextTile = rb.position + (Vector3)(dir * tileSize);
-        Collider[] hits = Physics.OverlapBox(nextTile, new Vector3(0.4f, 0.4f, 0.4f));
+        Vector2 nextTile = targetTile + dir * tileSize;
+
+        Collider[] hits = Physics.OverlapBox(
+            new Vector3(nextTile.x, nextTile.y, rb.position.z),
+            new Vector3(0.4f, 0.4f, 0.4f)
+        );
 
         foreach (Collider hit in hits)
         {
-            if (hit.CompareTag("wall") || hit.GetComponent<LockedDoor>() != null)
+            if (hit.CompareTag("wall") ||
+                hit.GetComponent<LockedDoor>() != null)
+            {
+                return true;
+            }
+
+            GridWalk otherEnemy = hit.GetComponentInParent<GridWalk>();
+
+            if (otherEnemy != null && otherEnemy != this)
                 return true;
         }
 
@@ -143,5 +165,14 @@ public abstract class GridWalk : Enemy
 
         if (!IsBlocked(dir))
             openDirs.Add(dir);
+    }
+
+    public void ReverseDirection()
+    {
+        if (moveDir == Vector2.zero)
+            return;
+
+        targetTile -= moveDir * tileSize * 2f;
+        moveDir = -moveDir;
     }
 }

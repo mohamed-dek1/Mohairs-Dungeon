@@ -17,14 +17,31 @@ public abstract class Enemy : RoomObject
     protected Vector3 startPosition;
     protected bool defeated = false;
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player"))
-            return;
+        if (other.CompareTag("Player"))
+        {
+            Health playerHealth = other.GetComponentInParent<Health>();
+            if (playerHealth != null)
+                playerHealth.TakeDamage(contactDamage, transform.position);
 
-        Health playerHealth = other.GetComponentInParent<Health>();
-        if (playerHealth != null)
-            playerHealth.TakeDamage(contactDamage, transform.position);
+            OnHitPlayer();
+            return;
+        }
+
+        GridWalk otherEnemy = other.GetComponentInParent<GridWalk>();
+
+        if (otherEnemy != null && otherEnemy != this)
+        {
+            OnHitGridWalker(otherEnemy);
+        }
+    }
+
+    protected virtual void OnHitPlayer()
+    {
+    }
+    protected virtual void OnHitGridWalker(GridWalk other)
+    {
     }
 
     public override void Init(RoomHandler handler)

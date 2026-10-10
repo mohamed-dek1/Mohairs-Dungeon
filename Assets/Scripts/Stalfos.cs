@@ -20,4 +20,17 @@ public class Stalfos : GridWalk
     {
         return RandomDirection(keepStraightChance);
     }
+
+    protected override void OnHitPlayer()
+    {
+        Vector2 toPlayer = (Vector2)player.position - (Vector2)rb.position;
+
+        if (Vector2.Dot(moveDir, toPlayer) > 0)
+            ReverseDirection();
+    }
+
+    protected override void OnHitGridWalker(GridWalk other)
+    {
+        ReverseDirection();
+    }
 }

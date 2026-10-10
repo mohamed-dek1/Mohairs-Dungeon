@@ -68805,8 +68805,9 @@ MonoBehaviour:
   - {fileID: 3127154363805870578, guid: 8eb6bcc10dfbe2943af12fc9405537b5, type: 3}
   - {fileID: 7905506082428660689, guid: bce8abe188e633b4a811623851596eb3, type: 3}
   swordBeamPrefab: {fileID: 4969453698221294676, guid: 7f06b91e652dd1d4682ab1635ac992c2, type: 3}
-  hitStunDuration: 1
-  knockbackForce: 0.8
+  hitStunDuration: 0.8
+  knockbackSpeed: 15
+  knockbackDuration: 0.25
   arrowTimeout: 1
   boomerangTimeout: 1
 --- !u!65 &666988743
