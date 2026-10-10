@@ -55750,7 +55750,7 @@ GameObject:
   - component: {fileID: 548550461}
   m_Layer: 0
   m_Name: Hurtbox
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68804,12 +68804,14 @@ MonoBehaviour:
   - {fileID: 2523511319713137318, guid: d9f8dbe019955fa49b22d317eae92af2, type: 3}
   - {fileID: 3127154363805870578, guid: 8eb6bcc10dfbe2943af12fc9405537b5, type: 3}
   - {fileID: 7905506082428660689, guid: bce8abe188e633b4a811623851596eb3, type: 3}
+  - {fileID: 7053205257635183852, guid: 4af661ad060cd38429d161347fd1b7b5, type: 3}
   swordBeamPrefab: {fileID: 4969453698221294676, guid: 7f06b91e652dd1d4682ab1635ac992c2, type: 3}
   hitStunDuration: 0.8
   knockbackSpeed: 15
   knockbackDuration: 0.25
   arrowTimeout: 1
   boomerangTimeout: 1
+  bombTimer: 2
 --- !u!65 &666988743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68859,7 +68861,7 @@ MonoBehaviour:
   coins: 0
   bombs: 0
   currentWeapon: 1
-  currentItem: 4
+  currentItem: 3
 --- !u!114 &666988746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143232,7 +143234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 13}
+  m_AnchoredPosition: {x: 0, y: 15.49}
   m_SizeDelta: {x: 25, y: 55}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1444842647
