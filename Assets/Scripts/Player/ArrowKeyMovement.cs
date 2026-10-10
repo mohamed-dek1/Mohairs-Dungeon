@@ -23,6 +23,7 @@ public class ArrowKeyMovement : MonoBehaviour
     [SerializeField] private float knockbackForce = 0.8f;
     [SerializeField] private float arrowTimeout = 1.0f;
     [SerializeField] private float boomerangTimeout = 1.0f;
+    [SerializeField] private float bombTimer = 2.0f;
 
     // ==========================
     // Private fields
@@ -34,8 +35,10 @@ public class ArrowKeyMovement : MonoBehaviour
     private int swordOffset = 0;
     private int arrowOffset = 4;
     private int boomerangOffset = 5;
+    private int bombOffset = 6;
     private GameObject activeBeam;
     private GameObject activeBoomerang;
+    private GameObject activeBomb;
 
     public bool getIsStunned()
     {
@@ -76,6 +79,9 @@ public class ArrowKeyMovement : MonoBehaviour
             } else if(inventory.CurrentItem == ItemType.Boomerang && activeBoomerang == null)
             {
                 StartCoroutine(ThrowBoomerang());
+            } else if (inventory.CurrentItem == ItemType.Bomb && inventory.Bombs > 0 && activeBomb == null)
+            {
+                StartCoroutine(PlaceBomb());
             }
             
         }
@@ -127,6 +133,18 @@ public class ArrowKeyMovement : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero;
         isStunned = false;
+    }
+
+    IEnumerator PlaceBomb()
+    {
+        inventory.UseBomb();
+        activeBomb = Instantiate(weapons[bombOffset], transform.position, Quaternion.identity);
+        activeBomb.SetActive(true);
+
+        yield return new WaitForSeconds(bombTimer);
+
+        if (activeBomb.TryGetComponent<Bomb>(out var bomb))
+            StartCoroutine(bomb.Explode());
     }
 
     IEnumerator ThrowArrow()
