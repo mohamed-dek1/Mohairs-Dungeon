@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Audio Sources")]
     public static bool god_mode = false;
+    
+    [Header("Audio Sources")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] float musicVolume = 0.25f;
+    [SerializeField] float SFXVolume = 0.1f;
 
     [Header("Audio Clips")]
     public AudioClip backgroundMusic;
@@ -15,6 +18,7 @@ public class GameManager : MonoBehaviour
     public AudioClip enemyDeath;
     public AudioClip bombExplosion;
     public AudioClip doorOpen;
+    public AudioClip secretFound;
 
 
     void Start()
@@ -23,6 +27,8 @@ public class GameManager : MonoBehaviour
 
         musicSource.clip = backgroundMusic;
         musicSource.loop = true;
+        setMusicVolume(musicVolume);
+        setSFXVolume(SFXVolume);
         musicSource.Play();
     }
 
