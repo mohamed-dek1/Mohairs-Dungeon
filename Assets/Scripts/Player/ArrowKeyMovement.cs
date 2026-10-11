@@ -96,6 +96,7 @@ public class ArrowKeyMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             GameManager.god_mode = !GameManager.god_mode;
+            inventory.UnlockItem(ItemType.Bomb);
         }
     }
 

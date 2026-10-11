@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3310073911567520115}
   - component: {fileID: 8080521409155371473}
   - component: {fileID: 2338851157972940064}
+  - component: {fileID: 4920477641845250109}
   m_Layer: 0
   m_Name: BladeTrap
   m_TagString: Untagged
@@ -177,3 +178,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8, y: 0.8, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4920477641845250109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627835748311507356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0569f1f9cb46b404ca9aa2345e905973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDropper
+  carriedItem: {fileID: 0}
+  carriedOffset: {x: 0, y: 0, z: 0}
+  drops:
+  - item: {fileID: 3219096816694593926, guid: dc4cd206858e4b048a2c72493555f223, type: 3}
+    chance: 100
+  - item: {fileID: 7182395608741172894, guid: 28a5106d2e101b04886868961dfe430d, type: 3}
+    chance: 100
+  - item: {fileID: 4888395755208025764, guid: 99cc05d47961d4d459acca30eec1538d, type: 3}
+    chance: 100
+  - item: {fileID: 6259728070107275692, guid: b39e742784da42d41b71d424907c12a6, type: 3}
+    chance: 100
+  - item: {fileID: 9044317173839852587, guid: a59af445679d3084a94fc650f7b21978, type: 3}
+    chance: 100
