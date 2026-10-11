@@ -48,6 +48,7 @@ public class BladeTrap : Enemy
     // ==========================
     // Movement
     // ==========================
+    
     protected override void Move()
     {
         if (state == TrapState.Waiting)
@@ -64,15 +65,15 @@ public class BladeTrap : Enemy
                 pauseTimer = returnPause;
                 return;
             }
-            else if (state == TrapState.Pausing)
-            {
-                pauseTimer -= Time.fixedDeltaTime;
-
-                if (pauseTimer <= 0f)
-                    state = TrapState.Returning;
-            }
 
             rb.MovePosition(new Vector3(nextPos.x, nextPos.y, rb.position.z));
+        }
+        else if (state == TrapState.Pausing)
+        {
+            pauseTimer -= Time.fixedDeltaTime;
+
+            if (pauseTimer <= 0f)
+                state = TrapState.Returning;
         }
         else if (state == TrapState.Returning)
         {
@@ -86,15 +87,13 @@ public class BladeTrap : Enemy
             {
                 nextPos = homePosition;
                 state = TrapState.Waiting;
+                moveDir = Vector2.zero;
             }
 
             rb.MovePosition(new Vector3(nextPos.x, nextPos.y, rb.position.z));
         }
     }
 
-    // ==========================
-    // Collision checks
-    // ==========================
     private bool IsBlocked(Vector2 position)
     {
         Collider[] hits = Physics.OverlapBox(
@@ -104,10 +103,14 @@ public class BladeTrap : Enemy
 
         foreach (Collider hit in hits)
         {
+            if (hit.transform == transform || hit.transform.IsChildOf(transform))
+                continue;
+
+            BladeTrap otherTrap = hit.GetComponentInParent<BladeTrap>();
+
             if (hit.CompareTag("wall") ||
                 hit.GetComponentInParent<LockedDoor>() != null ||
-                hit.GetComponentInParent<BladeTrap>() != null &&
-                hit.GetComponentInParent<BladeTrap>() != this)
+                (otherTrap != null && otherTrap != this))
             {
                 return true;
             }
@@ -115,4 +118,5 @@ public class BladeTrap : Enemy
 
         return false;
     }
+
 }

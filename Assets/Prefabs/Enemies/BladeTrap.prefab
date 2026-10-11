@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8803037982505596499}
   - component: {fileID: 3310073911567520115}
   - component: {fileID: 8080521409155371473}
+  - component: {fileID: 2338851157972940064}
   m_Layer: 0
   m_Name: BladeTrap
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2627835748311507356}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.99, y: 7.9799995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -107,9 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   contactDamage: 1
-  movementSpeed: 2
-  chargeSpeed: 6
-  returnSpeed: 3
+  movementSpeed: 3
+  chargeSpeed: 5
+  returnSpeed: 2
   returnPause: 0.5
 --- !u!54 &3310073911567520115
 Rigidbody:
@@ -155,3 +156,24 @@ MonoBehaviour:
       m_Calls: []
   maxHealth: 9999999
   invincibleTime: 0
+--- !u!65 &2338851157972940064
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627835748311507356}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8, y: 0.8, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

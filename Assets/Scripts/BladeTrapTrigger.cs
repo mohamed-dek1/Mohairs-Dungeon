@@ -8,7 +8,7 @@ public class BladeTrapTrigger : MonoBehaviour
     // ==========================
     // Settings
     // ==========================
-    [SerializeField] private BladeTrap bladeTrap;
+    [SerializeField] private BladeTrap[] bladeTraps;
     [SerializeField] private Axis axis;
 
     // ==========================
@@ -16,27 +16,35 @@ public class BladeTrapTrigger : MonoBehaviour
     // ==========================
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player") || bladeTrap == null)
+        if (!other.CompareTag("Player"))
             return;
 
-        Vector2 trapPosition = bladeTrap.transform.position;
         Vector2 playerPosition = other.transform.position;
 
-        Vector2 direction;
-
-        if (axis == Axis.Horizontal)
+        foreach (BladeTrap bladeTrap in bladeTraps)
         {
-            direction = playerPosition.x >= trapPosition.x
-                ? Vector2.right
-                : Vector2.left;
-        }
-        else
-        {
-            direction = playerPosition.y >= trapPosition.y
-                ? Vector2.up
-                : Vector2.down;
-        }
+            if (bladeTrap == null)
+                continue;
 
-        bladeTrap.TryActivate(direction);
+            Vector2 trapPosition = bladeTrap.transform.position;
+            Vector2 direction;
+
+            if (axis == Axis.Horizontal)
+            {
+                if (playerPosition.x >= trapPosition.x)
+                    direction = Vector2.right;
+                else
+                    direction = Vector2.left;
+            }
+            else
+            {
+                if (playerPosition.y >= trapPosition.y)
+                    direction = Vector2.up;
+                else
+                    direction = Vector2.down;
+            }
+
+            bladeTrap.TryActivate(direction);
+        }
     }
 }
