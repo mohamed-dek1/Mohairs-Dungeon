@@ -15,6 +15,7 @@ TagManager:
   - DownDoor
   - Water
   - Collectable
+  - Player Hurtbox
   layers:
   - Default
   - TransparentFX

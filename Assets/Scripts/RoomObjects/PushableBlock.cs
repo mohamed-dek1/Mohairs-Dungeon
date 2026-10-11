@@ -3,11 +3,13 @@ using System.Collections;
 
 public class PushableBlock : RoomObject
 {
-    private bool isBeingPushed = false;
     private bool beenPushed = false;
     [SerializeField] private float pushDelay = 0.5f;     // Time player must continuously push
     [SerializeField] private float moveSpeed = 2f;       // Speed at which block slides
     [SerializeField] private float tileSize = 1.0f;      // Grid unit size (0.5 to match ArrowKeyMovement)
+    [SerializeField] LockedDoor lockedDoor;
+    [SerializeField] Vector2 correctPosition;
+    [SerializeField] private bool isPuzzleBlock = false;
 
     private float pushTimer = 0f;
     private Vector2 pushDirection = Vector2.zero;
@@ -106,6 +108,16 @@ public class PushableBlock : RoomObject
         }
 
         transform.position = targetPosition;
+
+        if (isPuzzleBlock && lockedDoor != null)
+        {
+            Debug.Log("Checking block position: " + transform.position + " vs correct position: " + correctPosition);
+            if ((Vector2)transform.position == correctPosition)
+            {
+                Debug.Log("Block is in the correct position!");
+                lockedDoor.SetBlockPositionCorrect(true);
+            }
+        }
         isMoving = false;
     }
 }

@@ -21,7 +21,7 @@ public abstract class Enemy : RoomObject
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Player Hurtbox"))
         {
             Health playerHealth = other.GetComponentInParent<Health>();
             if (playerHealth != null)

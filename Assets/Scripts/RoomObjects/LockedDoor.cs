@@ -6,6 +6,8 @@ public class LockedDoor : RoomObject
     SpriteRenderer spriterenderer;
     [SerializeField] private Sprite openDoor;
     [SerializeField] private bool needsKey = true; // false = opens when the room is cleared
+    [SerializeField] private bool opensWhenRoomCleared = false; // false = opens when the puzzle is solved
+    [SerializeField] private bool isBlockPositionCorrect = false;
     [SerializeField] private LockedDoor[] linkedDoors;
 
     private bool isOpen = false;
@@ -23,21 +25,39 @@ public class LockedDoor : RoomObject
     {
         room = handler;
 
-        if (!needsKey)
+        if (!needsKey && opensWhenRoomCleared)
             room.OnRoomCleared += OpenDoor;
+    }
+
+    public void SetBlockPositionCorrect(bool value)
+    {
+        isBlockPositionCorrect = value;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (!needsKey || isOpen)
+        if (isOpen || opensWhenRoomCleared)
             return;
 
-        if (!collision.gameObject.CompareTag("Player"))
-            return;
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Player Hurtbox"))
+        {
+            if (needsKey)
+            {
+                Inventory inventory = collision.gameObject.GetComponent<Inventory>();
+                if (inventory != null && inventory.UseKey())
+                    OpenDoor();
+            }
 
-        Inventory inventory = collision.gameObject.GetComponent<Inventory>();
-        if (inventory != null && inventory.UseKey())
-            OpenDoor();
+            Debug.Log("Player collided with locked door!");
+            Debug.Log("isBlockPositionCorrect: " + isBlockPositionCorrect);
+            Debug.Log("opensWhenRoomCleared: " + opensWhenRoomCleared);
+            if (isBlockPositionCorrect)
+            {
+                Debug.Log("Block is in the correct position, opening door!");
+                OpenDoor();
+                return;
+            }
+        }
     }
 
     public void OpenDoor()
