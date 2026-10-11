@@ -50,15 +50,19 @@ public class RoomTransition : MonoBehaviour
         switch (other.tag)
         {
             case "LeftDoor":
+                Debug.Log("Transitioning to the left room.");
                 direction = Vector2.left;
                 break;
             case "RightDoor":
+                Debug.Log("Transitioning to the right room.");
                 direction = Vector2.right;
                 break;
             case "UpDoor":
+                Debug.Log("Transitioning to the upper room.");
                 direction = Vector2.up;
                 break;
             case "DownDoor":
+                Debug.Log("Transitioning to the lower room.");
                 direction =Vector2.down;
                 break;
             case "BowRoomEnter":
