@@ -1,16 +1,15 @@
-
 using System;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Wallmaster : Enemy
+public class Wallmaster : GridWalk
 {
     // ==========================
     // Settings
     // ==========================
+    [Header("Wallmaster Settings")]
     [SerializeField] private int pursuitStepLimit = 12;
-    [SerializeField] private float stepDelay = 0.3f;
-    [SerializeField] private float tileSize = 0.5f;
+    [SerializeField] private Vector2 entryDirection = Vector2.right;
 
     // ==========================
     // Events
@@ -19,338 +18,285 @@ public class Wallmaster : Enemy
     public event Action OnPlayerCarriedOut;
 
     // ==========================
-    // Private fields
+    // State Tracking
     // ==========================
-    private enum WallmasterState
-    {
-        Pursuing,
-        Retreating,
-        CarryingPlayer
-    }
+    private enum State { Pursuing, Retreating, CarryingPlayer }
+    private State state;
 
-    private WallmasterState state;
+    private int emergenceStepCount;
+    private int pursuitStepCount;
 
     private ArrowKeyMovement carriedPlayer;
+    private Rigidbody carriedPlayerRb;
+    private Collider[] carriedPlayerColliders;
+    private bool[] originalColliderStates;
+    private bool originalKinematicState;
 
-    private Vector3 entryPosition;
-    private Vector3 currentTile;
-    private Vector3 targetTile;
-
-    private readonly List<Vector3> pursuitPath = new List<Vector3>();
-
-    private int pursuitSteps;
-    private float stepTimer;
-    private bool isMoving;
-    private bool isPursuitStep;
-
+// ==========================
+    // Room Setup
     // ==========================
-    // Room setup
-    // ==========================
+    public override void Init(RoomHandler handler)
+    {
+        base.Init(handler);
+        
+        // Prevents Enemy.cs OnTriggerStay from applying knockback when grabbing the player
+        contactDamage = 0; 
+        
+        // Force the Wallmaster to find the player if GridWalk missed it during dynamic spawn
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+                player = playerObj.transform;
+        }
+    }
+
+    private void ResetWallmaster()
+    {
+        rb.position = startPosition;
+        targetTile = startPosition;
+        moveDir = Vector2.zero;
+
+        state = State.Pursuing;
+        emergenceStepCount = 0;
+        pursuitStepCount = 0;
+
+        // Double check player exists before starting pursuit
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+                player = playerObj.transform;
+        }
+
+        ReleasePlayer();
+    }
+
     protected override void RoomEntered()
     {
         base.RoomEntered();
+        ResetWallmaster();
+    }
 
-        entryPosition = startPosition;
-        rb.position = entryPosition;
-
-        currentTile = entryPosition;
-        targetTile = entryPosition;
-
-        pursuitPath.Clear();
-        pursuitPath.Add(entryPosition);
-
-        state = WallmasterState.Pursuing;
-        pursuitSteps = 0;
-        stepTimer = 0f;
-        isMoving = false;
-        isPursuitStep = false;
-        carriedPlayer = null;
+    public void SpawnAt(Vector3 spawnWorldPos, Vector2 directionIntoRoom)
+    {
+        transform.position = spawnWorldPos;
+        startPosition = spawnWorldPos;
+        entryDirection = directionIntoRoom.normalized;
+        
+        gameObject.SetActive(true);
+        ResetWallmaster();
     }
 
     // ==========================
-    // Movement
+    // Movement & Direction Selection
     // ==========================
     protected override void Move()
     {
-        if (state == WallmasterState.CarryingPlayer &&
-            carriedPlayer == null)
-        {
-            state = WallmasterState.Retreating;
-        }
+        // Executes standard GridWalk movement loop
+        base.Move();
 
-        if (isMoving)
-        {
-            MoveTowardTarget();
-            SyncCarriedPlayer();
-            return;
-        }
-
-        if (stepTimer > 0f)
-        {
-            stepTimer -= Time.fixedDeltaTime;
-            SyncCarriedPlayer();
-            return;
-        }
-
-        if (state == WallmasterState.Pursuing)
-            BeginPursuitStep();
-        else
-            BeginReturnStep();
-
+        // Keep carried player synced with Wallmaster's position
         SyncCarriedPlayer();
     }
 
-    private void MoveTowardTarget()
+    protected override Vector2 ChooseDirection()
     {
-        Vector3 nextPosition = Vector3.MoveTowards(
-            rb.position,
-            targetTile,
-            movementSpeed * Time.fixedDeltaTime
-        );
-
-        nextPosition.z = entryPosition.z;
-        rb.MovePosition(nextPosition);
-
-        if (Vector2.Distance(
-            new Vector2(nextPosition.x, nextPosition.y),
-            new Vector2(targetTile.x, targetTile.y)) > 0.001f)
+        // Phase 1: Emergence (Move 2 tiles out through the wall into the room)
+        if (state == State.Pursuing && emergenceStepCount < 2)
         {
-            return;
+            emergenceStepCount++;
+            return entryDirection;
         }
 
-        rb.MovePosition(targetTile);
-
-        currentTile = targetTile;
-        isMoving = false;
-        stepTimer = stepDelay;
-
-        OnTileReached();
-    }
-
-    private void OnTileReached()
-    {
-        if (isPursuitStep)
+        // Phase 2: Retreating or Carrying Player back into wall
+        if (state == State.Retreating || state == State.CarryingPlayer)
         {
-            pursuitPath.Add(currentTile);
-            isPursuitStep = false;
+            Vector2 toStart = (Vector2)startPosition - targetTile;
 
-            if (state == WallmasterState.Pursuing)
+            // Reached initial wall spawn origin tile
+            if (toStart.sqrMagnitude < 0.001f)
             {
-                pursuitSteps++;
-
-                if (pursuitSteps >= pursuitStepLimit)
-                    state = WallmasterState.Retreating;
+                FinishReturn();
+                return Vector2.zero;
             }
 
-            return;
+            return GetCardinalDirTo(toStart);
         }
 
-        // We have reached the previous tile on the recorded path.
-        if (pursuitPath.Count > 1)
-            pursuitPath.RemoveAt(pursuitPath.Count - 1);
-
-        if (pursuitPath.Count <= 1)
-            FinishReturn();
-    }
-
-    // ==========================
-    // Pursuit
-    // ==========================
-    private void BeginPursuitStep()
-    {
-        GameObject playerObject = GameObject.FindWithTag("Player");
-
-        if (playerObject == null)
-            return;
-
-        Vector3 playerPosition = playerObject.transform.position;
-
-        Vector2 difference = new Vector2(
-            playerPosition.x - currentTile.x,
-            playerPosition.y - currentTile.y
-        );
-
-        if (difference.sqrMagnitude < 0.001f)
-            return;
-
-        Vector2Int primaryDirection;
-        Vector2Int secondaryDirection = Vector2Int.zero;
-
-        // Prioritize the axis with the largest distance to the player.
-        if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
+        // Phase 3: Pursuing the Player
+        if (pursuitStepCount >= pursuitStepLimit)
         {
-            primaryDirection = difference.x > 0f
-                ? Vector2Int.right
-                : Vector2Int.left;
+            state = State.Retreating;
+            return ChooseDirection();
+        }
 
-            if (Mathf.Abs(difference.y) > 0.001f)
-            {
-                secondaryDirection = difference.y > 0f
-                    ? Vector2Int.up
-                    : Vector2Int.down;
-            }
+        if (player == null) return Vector2.zero;
+
+        Vector2 toPlayer = (Vector2)player.position - targetTile;
+        if (toPlayer.sqrMagnitude < 0.001f) return Vector2.zero;
+
+        Vector2 primaryDir;
+        Vector2 secondaryDir = Vector2.zero;
+
+        if (Mathf.Abs(toPlayer.x) > Mathf.Abs(toPlayer.y))
+        {
+            primaryDir = toPlayer.x > 0 ? Vector2.right : Vector2.left;
+            if (Mathf.Abs(toPlayer.y) > 0.001f)
+                secondaryDir = toPlayer.y > 0 ? Vector2.up : Vector2.down;
         }
         else
         {
-            primaryDirection = difference.y > 0f
-                ? Vector2Int.up
-                : Vector2Int.down;
-
-            if (Mathf.Abs(difference.x) > 0.001f)
-            {
-                secondaryDirection = difference.x > 0f
-                    ? Vector2Int.right
-                    : Vector2Int.left;
-            }
+            primaryDir = toPlayer.y > 0 ? Vector2.up : Vector2.down;
+            if (Mathf.Abs(toPlayer.x) > 0.001f)
+                secondaryDir = toPlayer.x > 0 ? Vector2.right : Vector2.left;
         }
 
-        if (TryBeginStep(primaryDirection))
-            return;
-
-        if (secondaryDirection != Vector2Int.zero &&
-            TryBeginStep(secondaryDirection))
+        // Only consume a pursuit step if the Wallmaster actually moves
+        if (!IsBlocked(primaryDir))
         {
-            return;
+            pursuitStepCount++;
+            return primaryDir;
         }
 
-        // No available step toward the player.
-        state = WallmasterState.Retreating;
-    }
+        if (secondaryDir != Vector2.zero && !IsBlocked(secondaryDir))
+        {
+            pursuitStepCount++;
+            return secondaryDir;
+        }
 
-    private bool TryBeginStep(Vector2Int direction)
-    {
-        Vector3 nextTile = currentTile + new Vector3(
-            direction.x * tileSize,
-            direction.y * tileSize,
-            0f
-        );
-
-        if (IsBlocked(nextTile))
-            return false;
-
-        targetTile = nextTile;
-        isMoving = true;
-        isPursuitStep = true;
-
-        return true;
+        // If both paths are blocked (e.g. cornered on obstacles), 
+        // trigger a retreat back into the wall rather than freezing in place.
+        state = State.Retreating;
+        return ChooseDirection();
     }
 
     // ==========================
-    // Carrying player
+    // Collision Override 
+    // ==========================
+    protected override bool IsBlocked(Vector2 dir)
+    {
+        // Bypass wall colliders while stepping out through the 2 wall tiles on spawn
+        if (state == State.Pursuing && emergenceStepCount < 2)
+        {
+            return false;
+        }
+
+        // Phase 2: Ghost through obstacles to guarantee retreat to the wall without getting stuck
+        if (state == State.Retreating || state == State.CarryingPlayer)
+        {
+            return false;
+        }
+
+        // Standard GridWalk obstacle check for room floor area
+        return base.IsBlocked(dir);
+    }
+
+    // ==========================
+    // Player Capture & Sync
     // ==========================
     protected override void OnHitPlayer()
     {
-        if (state != WallmasterState.Pursuing)
-            return;
+        if (state != State.Pursuing) return;
 
-        GameObject playerObject = GameObject.FindWithTag("Player");
-
-        if (playerObject == null)
-            return;
-
-        ArrowKeyMovement player =
-            playerObject.GetComponentInParent<ArrowKeyMovement>();
-
-        GrabPlayer(player);
+        ArrowKeyMovement playerMovement = player.GetComponentInParent<ArrowKeyMovement>();
+        if (playerMovement != null)
+        {
+            GrabPlayer(playerMovement);
+        }
     }
 
-    public void GrabPlayer(ArrowKeyMovement player)
+    private void GrabPlayer(ArrowKeyMovement playerMovement)
     {
-        if (player == null || state != WallmasterState.Pursuing)
-            return;
+        if (state == State.CarryingPlayer) return;
 
-        carriedPlayer = player;
-        carriedPlayer.SetCarried(true);
+        carriedPlayer = playerMovement;
+        carriedPlayer.enabled = false; // Disable player input
 
-        state = WallmasterState.CarryingPlayer;
+        // Lock player physics so gravity/velocity doesn't fight the Wallmaster
+        carriedPlayerRb = carriedPlayer.GetComponent<Rigidbody>();
+        if (carriedPlayerRb != null)
+        {
+            originalKinematicState = carriedPlayerRb.isKinematic;
+            carriedPlayerRb.isKinematic = true;
+        }
+
+        // Disable player colliders to prevent physics fighting
+        carriedPlayerColliders = carriedPlayer.GetComponentsInChildren<Collider>();
+        originalColliderStates = new bool[carriedPlayerColliders.Length];
+
+        for (int i = 0; i < carriedPlayerColliders.Length; i++)
+        {
+            originalColliderStates[i] = carriedPlayerColliders[i].enabled;
+            carriedPlayerColliders[i].enabled = false;
+        }
+
+        state = State.CarryingPlayer;
     }
 
     private void SyncCarriedPlayer()
     {
-        if (carriedPlayer == null)
-            return;
-
-        Vector3 playerPosition = new Vector3(
-            rb.position.x,
-            rb.position.y,
-            carriedPlayer.transform.position.z
-        );
-
-        carriedPlayer.SetCarriedPosition(playerPosition);
+        if (carriedPlayer != null)
+        {
+            carriedPlayer.transform.position = new Vector3(
+                rb.position.x, 
+                rb.position.y, 
+                carriedPlayer.transform.position.z
+            );
+        }
     }
 
-    // ==========================
-    // Retreat and return
-    // ==========================
-    private void BeginReturnStep()
+    private void ReleasePlayer()
     {
-        if (pursuitPath.Count <= 1)
+        if (carriedPlayer == null) return;
+
+        carriedPlayer.enabled = true;
+
+        if (carriedPlayerRb != null)
         {
-            FinishReturn();
-            return;
+            carriedPlayerRb.isKinematic = originalKinematicState;
         }
 
-        // Follow the path in reverse, one tile at a time.
-        targetTile = pursuitPath[pursuitPath.Count - 2];
-        isMoving = true;
-        isPursuitStep = false;
+        if (carriedPlayerColliders != null)
+        {
+            for (int i = 0; i < carriedPlayerColliders.Length; i++)
+            {
+                if (carriedPlayerColliders[i] != null)
+                    carriedPlayerColliders[i].enabled = originalColliderStates[i];
+            }
+        }
+
+        carriedPlayer = null;
+        carriedPlayerRb = null;
     }
 
     private void FinishReturn()
     {
-        bool carryingPlayer = state == WallmasterState.CarryingPlayer;
+        bool captured = (state == State.CarryingPlayer);
 
-        if (carriedPlayer != null)
-        {
-            carriedPlayer.SetCarried(false);
-            carriedPlayer = null;
-        }
-
-        if (carryingPlayer)
-            OnPlayerCarriedOut?.Invoke();
-        else
-            OnDespawn?.Invoke();
-
+        ReleasePlayer();
         gameObject.SetActive(false);
+
+        if (captured)
+        {
+            OnPlayerCarriedOut?.Invoke();
+            // Reload the current scene when Link is successfully dragged away
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else
+        {
+            OnDespawn?.Invoke();
+        }
     }
 
     // ==========================
-    // Collision checks
+    // Helpers
     // ==========================
-    private bool IsBlocked(Vector3 position)
+    private Vector2 GetCardinalDirTo(Vector2 offset)
     {
-        Collider[] hits = Physics.OverlapBox(
-            new Vector3(position.x, position.y, entryPosition.z),
-            new Vector3(tileSize * 0.4f, tileSize * 0.4f, 0.4f)
-        );
-
-        foreach (Collider hit in hits)
-        {
-            if (hit.transform == transform ||
-                hit.transform.IsChildOf(transform) ||
-                hit.isTrigger)
-            {
-                continue;
-            }
-
-            if (hit.CompareTag("wall") ||
-                hit.GetComponentInParent<LockedDoor>() != null)
-            {
-                return true;
-            }
-
-            GridWalk otherEnemy = hit.GetComponentInParent<GridWalk>();
-
-            if (otherEnemy != null && otherEnemy != this)
-                return true;
-
-            Wallmaster otherWallmaster =
-                hit.GetComponentInParent<Wallmaster>();
-
-            if (otherWallmaster != null && otherWallmaster != this)
-                return true;
-        }
-
-        return false;
+        if (Mathf.Abs(offset.x) >= Mathf.Abs(offset.y))
+            return offset.x > 0 ? Vector2.right : Vector2.left;
+        else
+            return offset.y > 0 ? Vector2.up : Vector2.down;
     }
 }

@@ -134823,7 +134823,7 @@ PrefabInstance:
     - target: {fileID: 158322400146120275, guid: 674ade0c61080b54ca4968c985439b69, type: 3}
       propertyPath: 'roomObjects.Array.data[2]'
       value: 
-      objectReference: {fileID: 1595408378}
+      objectReference: {fileID: 0}
     - target: {fileID: 387446111354100471, guid: 674ade0c61080b54ca4968c985439b69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 64
@@ -163157,7 +163157,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1595408380}
   - component: {fileID: 1595408379}
-  - component: {fileID: 1595408378}
   - component: {fileID: 1595408381}
   - component: {fileID: 1595408382}
   - component: {fileID: 1595408383}
@@ -163168,23 +163167,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1595408378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595408377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9115c93ff0994e72869eaaa927e5d16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  contactDamage: 1
-  movementSpeed: 2
-  pursuitStepLimit: 12
-  stepDelay: 0.3
-  tileSize: 0.5
 --- !u!212 &1595408379
 SpriteRenderer:
   serializedVersion: 2
@@ -163253,7 +163235,7 @@ Transform:
   m_GameObject: {fileID: 1595408377}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70.98, y: 33.92, z: 0}
+  m_LocalPosition: {x: 70.98, y: 33.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -163321,7 +163303,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!4 &1596492063 stripped

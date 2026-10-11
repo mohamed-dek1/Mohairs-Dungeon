@@ -96,7 +96,7 @@ public abstract class GridWalk : Enemy
     // ==========================
     // Collision checks
     // ==========================
-    protected bool IsBlocked(Vector2 dir)
+    protected virtual bool IsBlocked(Vector2 dir)
     {
         Vector2 nextTile = targetTile + dir * tileSize;
 
