@@ -16,6 +16,8 @@ TagManager:
   - Water
   - Collectable
   - Player Hurtbox
+  - BowRoomEnter
+  - BowRoomExit
   layers:
   - Default
   - TransparentFX

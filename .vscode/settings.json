@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Mohairs-Dungeon.slnx"
+    "dotnet.defaultSolution": "Mohair's Dungeon.slnx"
 }
