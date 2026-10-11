@@ -25,7 +25,8 @@ public class Inventory : MonoBehaviour
 
     public void Start()
     {
-        unlockedItems.Add(ItemType.Sword);
+        UnlockItem(ItemType.Bow);
+        UnlockItem(ItemType.Boomerang);
     }
 
     public void Update()
@@ -35,13 +36,6 @@ public class Inventory : MonoBehaviour
             coins = 99;
             bombs = 99;
             keys = 99;
-        }
-
-        UnlockItem(ItemType.Bow);
-
-        if (currentItem == ItemType.Bow)
-        {
-            SetCurrentItem(ItemType.Bow);
         }
     }
 
@@ -139,11 +133,23 @@ public class Inventory : MonoBehaviour
         {
             bombs = 99;
         }
+
+        if (!HasItem(ItemType.Bomb))
+        {
+            unlockedItems.Add(ItemType.Bomb);
+        }
+        
     }
     public bool UseBomb()
     {
         if (bombs <= 0) return false;
         bombs--;
+
+        if (bombs <= 0)
+        {
+            unlockedItems.Remove(ItemType.Bomb);
+        }
+
         return true;
     }
 
