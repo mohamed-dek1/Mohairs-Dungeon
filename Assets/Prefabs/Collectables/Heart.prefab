@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8489821656397855954}
   - component: {fileID: 7550148207727954600}
   - component: {fileID: 9218383237490064142}
+  - component: {fileID: 5243101082819781922}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -128,3 +129,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.44026184, y: 0.50276446, z: 0.2}
   m_Center: {x: 0.0000038146973, y: 0.0013822317, z: 0}
+--- !u!114 &5243101082819781922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182395608741172894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f824e6884878c45cb82f482526555950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
+  directionMode: 0
+  frameRate: 0.1
+  moveDown:
+  - {fileID: 21300246, guid: 45afd34443b96473598b76e2b1778b4e, type: 3}
+  - {fileID: 21300248, guid: 45afd34443b96473598b76e2b1778b4e, type: 3}
+  moveUp: []
+  moveSide: []
+  spritesFaceRight: 1
