@@ -134594,7 +134594,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 158322400146120275, guid: 674ade0c61080b54ca4968c985439b69, type: 3}
       propertyPath: roomObjects.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 158322400146120275, guid: 674ade0c61080b54ca4968c985439b69, type: 3}
       propertyPath: 'roomObjects.Array.data[0]'
@@ -134604,6 +134604,10 @@ PrefabInstance:
       propertyPath: 'roomObjects.Array.data[1]'
       value: 
       objectReference: {fileID: 2089373111}
+    - target: {fileID: 158322400146120275, guid: 674ade0c61080b54ca4968c985439b69, type: 3}
+      propertyPath: 'roomObjects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1595408378}
     - target: {fileID: 387446111354100471, guid: 674ade0c61080b54ca4968c985439b69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 64
@@ -162875,6 +162879,8 @@ GameObject:
   - component: {fileID: 1595408379}
   - component: {fileID: 1595408378}
   - component: {fileID: 1595408381}
+  - component: {fileID: 1595408382}
+  - component: {fileID: 1595408383}
   m_Layer: 0
   m_Name: Wallmaster
   m_TagString: Untagged
@@ -162899,7 +162905,6 @@ MonoBehaviour:
   pursuitStepLimit: 12
   stepDelay: 0.3
   tileSize: 0.5
-  maxWallSearchDistance: 30
 --- !u!212 &1595408379
 SpriteRenderer:
   serializedVersion: 2
@@ -162991,6 +162996,54 @@ MonoBehaviour:
       m_Calls: []
   maxHealth: 1
   invincibleTime: 0
+--- !u!65 &1595408382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595408377}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1595408383
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595408377}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &1596492063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4486342312188120077, guid: 56d378bc2e8e3404c887373fbcea6416, type: 3}
