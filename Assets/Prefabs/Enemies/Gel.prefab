@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 8991487631361688299}
   - component: {fileID: 6813821273016874980}
   - component: {fileID: 1111920417658304571}
+  - component: {fileID: 2026196896141136150}
   - component: {fileID: 3518452094807913939}
+  - component: {fileID: 3107511735940225178}
   m_Layer: 0
   m_Name: Gel
   m_TagString: Untagged
@@ -179,6 +181,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.55, y: 0.55, z: 0.2}
   m_Center: {x: 0, y: -0.05, z: 0}
+--- !u!114 &2026196896141136150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3155433820660824525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab4df151412841ad892594ba84bd3da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GelColorDecorator
+  colorOptions:
+  - frame1: {fileID: -3255944389184253973, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+    frame2: {fileID: -1552903423, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+  - frame1: {fileID: -1751632019, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+    frame2: {fileID: -1236980527, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+  - frame1: {fileID: -1943510067, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+    frame2: {fileID: -852050909, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+  - frame1: {fileID: -664043474, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+    frame2: {fileID: -1867072942, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+  - frame1: {fileID: -822597559, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+    frame2: {fileID: -1388961915, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+  - frame1: {fileID: 1890626766, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+    frame2: {fileID: -340351798, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+  rainbow: 0
+  rainbowInterval: 0.5
 --- !u!114 &3518452094807913939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,8 +223,25 @@ MonoBehaviour:
   directionMode: 0
   frameRate: 0.15
   moveDown:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -3255944389184253973, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
+  - {fileID: -1552903423, guid: db6e41553013c4a8b95a0ff362efa920, type: 3}
   moveUp: []
   moveSide: []
   spritesFaceRight: 1
+--- !u!114 &3107511735940225178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3155433820660824525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0569f1f9cb46b404ca9aa2345e905973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDropper
+  carriedItem: {fileID: 0}
+  carriedOffset: {x: 0, y: 0, z: 0}
+  drops:
+  - item: {fileID: 9044317173839852587, guid: a59af445679d3084a94fc650f7b21978, type: 3}
+    chance: 10

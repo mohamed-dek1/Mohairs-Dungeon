@@ -142,4 +142,8 @@ public class EnemyAnimator : MonoBehaviour
     {
         return frameRate;
     }
+    public void SetMoveDown(Sprite[] sprites)
+    {
+        moveDown = sprites;
+    }
 }

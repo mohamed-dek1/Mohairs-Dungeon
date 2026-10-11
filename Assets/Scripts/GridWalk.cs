@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -19,6 +20,10 @@ public abstract class GridWalk : Enemy
     // Private fields
     // ==========================
     private float waitTimer;
+
+    // ==========================
+    // Room setup
+    // ==========================
     protected override void RoomEntered()
     {
         base.RoomEntered();
@@ -27,9 +32,16 @@ public abstract class GridWalk : Enemy
         waitTimer = 0.0f;
 
         if (player == null)
-            player = GameObject.FindWithTag("Player").transform;
+        {
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            if (playerObject != null)
+                player = playerObject.transform;
+        }
     }
 
+    // ==========================
+    // Movement
+    // ==========================
     protected override void Move()
     {
         if (waitTimer > 0)
@@ -40,10 +52,10 @@ public abstract class GridWalk : Enemy
 
         Vector2 currentPos = rb.position;
 
-        // on center tile
+        // On center tile
         if (Vector2.Distance(currentPos, targetTile) < 0.01f)
         {
-             rb.position = targetTile;
+            rb.position = targetTile;
             currentPos = targetTile;
 
             moveDir = ChooseDirection();
@@ -65,11 +77,15 @@ public abstract class GridWalk : Enemy
             targetTile += moveDir * tileSize;
         }
 
-        Vector2 nextPos = Vector2.MoveTowards(currentPos, targetTile, GetSpeed() * Time.fixedDeltaTime);
+        Vector2 nextPos = Vector2.MoveTowards(
+            currentPos,
+            targetTile,
+            GetSpeed() * Time.fixedDeltaTime
+        );
+
         rb.MovePosition(nextPos);
     }
 
-    // return open direction
     protected abstract Vector2 ChooseDirection();
 
     protected virtual float GetSpeed()
@@ -78,7 +94,7 @@ public abstract class GridWalk : Enemy
     }
 
     // ==========================
-    // Helpers
+    // Collision checks
     // ==========================
     protected bool IsBlocked(Vector2 dir)
     {
@@ -92,7 +108,7 @@ public abstract class GridWalk : Enemy
         foreach (Collider hit in hits)
         {
             if (hit.CompareTag("wall") ||
-                hit.GetComponent<LockedDoor>() != null)
+                hit.GetComponentInParent<LockedDoor>() != null)
             {
                 return true;
             }
@@ -106,15 +122,18 @@ public abstract class GridWalk : Enemy
         return false;
     }
 
+    // ==========================
+    // Helpers
+    // ==========================
     protected void Wait(float seconds)
     {
         waitTimer = seconds;
     }
 
-    // Pick random open direction
     protected Vector2 RandomDirection(float keepStraightChance)
     {
         List<Vector2> openDirs = new List<Vector2>();
+
         AddIfOpen(openDirs, Vector2.up);
         AddIfOpen(openDirs, Vector2.down);
         AddIfOpen(openDirs, Vector2.left);
@@ -124,13 +143,15 @@ public abstract class GridWalk : Enemy
         if (openDirs.Count == 0)
             return -moveDir;
 
-        if (openDirs.Contains(moveDir) && Random.value < keepStraightChance)
+        if (openDirs.Contains(moveDir) &&
+            Random.value < keepStraightChance)
+        {
             return moveDir;
+        }
 
         return openDirs[Random.Range(0, openDirs.Count)];
     }
 
-    // Check if player is on same row col
     protected bool IsAlignedWithPlayer(out Vector2 dirToPlayer)
     {
         Vector2 offset = (Vector2)player.position - (Vector2)rb.position;
@@ -138,18 +159,12 @@ public abstract class GridWalk : Enemy
 
         if (Mathf.Abs(offset.x) < tileSize / 2f)
         {
-            if (offset.y > 0)
-                dirToPlayer = Vector2.up;
-            else
-                dirToPlayer = Vector2.down;
+            dirToPlayer = offset.y > 0 ? Vector2.up : Vector2.down;
             return true;
         }
         else if (Mathf.Abs(offset.y) < tileSize / 2f)
         {
-            if (offset.x > 0)
-                dirToPlayer = Vector2.right;
-            else
-                dirToPlayer = Vector2.left;
+            dirToPlayer = offset.x > 0 ? Vector2.right : Vector2.left;
             return true;
         }
 
