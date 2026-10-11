@@ -40,6 +40,7 @@ public class ArrowKeyMovement : MonoBehaviour
     private GameObject activeBeam;
     private GameObject activeBoomerang;
     private GameObject activeBomb;
+    private bool isCarried;
 
     public bool getIsStunned()
     {
@@ -105,6 +106,12 @@ public class ArrowKeyMovement : MonoBehaviour
             return;
 
         if (isAttacking)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        if (isCarried)
         {
             rb.linearVelocity = Vector2.zero;
             return;
@@ -323,5 +330,22 @@ public class ArrowKeyMovement : MonoBehaviour
 
         float maxSpeed = distance / Time.fixedDeltaTime;
         return Mathf.Min(movement_speed, maxSpeed);
+    }
+
+    // ==========================
+    // Wallmaster interaction
+    // ==========================
+
+    public void SetCarried(bool carried)
+    {
+        isCarried = carried;
+
+        if (carried && rb != null)
+            rb.linearVelocity = Vector2.zero;
+    }
+
+    public void SetCarriedPosition(Vector2 position)
+    {
+        rb.position = position;
     }
 }

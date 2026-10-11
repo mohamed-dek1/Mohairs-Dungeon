@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ public class Wallmaster : Enemy
     // ==========================
     [SerializeField] private int pursuitStepLimit = 12;
     [SerializeField] private float stepDelay = 0.3f;
-    [SerializeField] private float tileSize = 1.0f;
+    [SerializeField] private float tileSize = 0.5f;
     [SerializeField] private int maxWallSearchDistance = 30;
 
     // ==========================
@@ -29,7 +28,7 @@ public class Wallmaster : Enemy
     }
 
     private WallmasterState state;
-    private IGridMovement carriedPlayer;
+    private ArrowKeyMovement carriedPlayer;
 
     private Vector2Int currentGridPosition;
     private Vector2Int targetGridPosition;
@@ -180,7 +179,7 @@ public class Wallmaster : Enemy
             return;
 
         carriedPlayer = player;
-        carriedPlayer.SetMovementEnabled(false);
+        carriedPlayer.SetCarried(true);
 
         state = WallmasterState.CarryingPlayer;
         hasTarget = false;
@@ -198,7 +197,7 @@ public class Wallmaster : Enemy
         {
             if (carriedPlayer != null)
             {
-                carriedPlayer.SetMovementEnabled(true);
+                carriedPlayer.SetCarried(false);
                 carriedPlayer = null;
             }
 
@@ -210,7 +209,7 @@ public class Wallmaster : Enemy
         MoveOneTileTowardTarget();
 
         if (carriedPlayer != null)
-            carriedPlayer.SetGridPosition(currentGridPosition);
+            carriedPlayer.SetCarriedPosition(currentGridPosition);
     }
 
     // ==========================
