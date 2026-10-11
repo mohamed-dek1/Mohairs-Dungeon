@@ -1,4 +1,6 @@
+
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Wallmaster : Enemy
@@ -9,7 +11,6 @@ public class Wallmaster : Enemy
     [SerializeField] private int pursuitStepLimit = 12;
     [SerializeField] private float stepDelay = 0.3f;
     [SerializeField] private float tileSize = 0.5f;
-    [SerializeField] private int maxWallSearchDistance = 30;
 
     // ==========================
     // Events
@@ -28,15 +29,19 @@ public class Wallmaster : Enemy
     }
 
     private WallmasterState state;
+
     private ArrowKeyMovement carriedPlayer;
 
-    private Vector2Int currentGridPosition;
-    private Vector2Int targetGridPosition;
-    private Vector2Int entryGridPosition;
+    private Vector3 entryPosition;
+    private Vector3 currentTile;
+    private Vector3 targetTile;
+
+    private readonly List<Vector3> pursuitPath = new List<Vector3>();
 
     private int pursuitSteps;
     private float stepTimer;
-    private bool hasTarget;
+    private bool isMoving;
+    private bool isPursuitStep;
 
     // ==========================
     // Room setup
@@ -45,15 +50,21 @@ public class Wallmaster : Enemy
     {
         base.RoomEntered();
 
-        currentGridPosition = WorldToGrid(transform.position);
-        entryGridPosition = currentGridPosition;
-        targetGridPosition = currentGridPosition;
+        entryPosition = startPosition;
+        rb.position = entryPosition;
+
+        currentTile = entryPosition;
+        targetTile = entryPosition;
+
+        pursuitPath.Clear();
+        pursuitPath.Add(entryPosition);
 
         state = WallmasterState.Pursuing;
         pursuitSteps = 0;
-        stepTimer = stepDelay;
+        stepTimer = 0f;
+        isMoving = false;
+        isPursuitStep = false;
         carriedPlayer = null;
-        hasTarget = false;
     }
 
     // ==========================
@@ -67,113 +78,183 @@ public class Wallmaster : Enemy
             state = WallmasterState.Retreating;
         }
 
-        stepTimer -= Time.fixedDeltaTime;
+        if (isMoving)
+        {
+            MoveTowardTarget();
+            SyncCarriedPlayer();
+            return;
+        }
 
         if (stepTimer > 0f)
+        {
+            stepTimer -= Time.fixedDeltaTime;
+            SyncCarriedPlayer();
             return;
-
-        stepTimer = stepDelay;
+        }
 
         if (state == WallmasterState.Pursuing)
-            PursuePlayer();
-        else if (state == WallmasterState.Retreating)
-            RetreatToWall();
-        else if (state == WallmasterState.CarryingPlayer)
-            CarryPlayerToWall();
+            BeginPursuitStep();
+        else
+            BeginReturnStep();
+
+        SyncCarriedPlayer();
+    }
+
+    private void MoveTowardTarget()
+    {
+        Vector3 nextPosition = Vector3.MoveTowards(
+            rb.position,
+            targetTile,
+            movementSpeed * Time.fixedDeltaTime
+        );
+
+        nextPosition.z = entryPosition.z;
+        rb.MovePosition(nextPosition);
+
+        if (Vector2.Distance(
+            new Vector2(nextPosition.x, nextPosition.y),
+            new Vector2(targetTile.x, targetTile.y)) > 0.001f)
+        {
+            return;
+        }
+
+        rb.MovePosition(targetTile);
+
+        currentTile = targetTile;
+        isMoving = false;
+        stepTimer = stepDelay;
+
+        OnTileReached();
+    }
+
+    private void OnTileReached()
+    {
+        if (isPursuitStep)
+        {
+            pursuitPath.Add(currentTile);
+            isPursuitStep = false;
+
+            if (state == WallmasterState.Pursuing)
+            {
+                pursuitSteps++;
+
+                if (pursuitSteps >= pursuitStepLimit)
+                    state = WallmasterState.Retreating;
+            }
+
+            return;
+        }
+
+        // We have reached the previous tile on the recorded path.
+        if (pursuitPath.Count > 1)
+            pursuitPath.RemoveAt(pursuitPath.Count - 1);
+
+        if (pursuitPath.Count <= 1)
+            FinishReturn();
     }
 
     // ==========================
     // Pursuit
     // ==========================
-    private void PursuePlayer()
+    private void BeginPursuitStep()
     {
-        Transform playerTransform = GameObject.FindWithTag("Player")?.transform;
+        GameObject playerObject = GameObject.FindWithTag("Player");
 
-        if (playerTransform == null)
+        if (playerObject == null)
             return;
 
-        Vector2Int playerPosition = WorldToGrid(playerTransform.position);
+        Vector3 playerPosition = playerObject.transform.position;
 
-        if (currentGridPosition == playerPosition)
-            return;
-
-        Vector2Int direction = GetDirectionToPlayer(
-            currentGridPosition,
-            playerPosition
+        Vector2 difference = new Vector2(
+            playerPosition.x - currentTile.x,
+            playerPosition.y - currentTile.y
         );
 
-        if (!TryMoveOneTile(direction))
-        {
-            Vector2Int alternateDirection = GetAlternateDirection(
-                currentGridPosition,
-                playerPosition,
-                direction
-            );
+        if (difference.sqrMagnitude < 0.001f)
+            return;
 
-            if (alternateDirection == Vector2Int.zero ||
-                !TryMoveOneTile(alternateDirection))
+        Vector2Int primaryDirection;
+        Vector2Int secondaryDirection = Vector2Int.zero;
+
+        // Prioritize the axis with the largest distance to the player.
+        if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
+        {
+            primaryDirection = difference.x > 0f
+                ? Vector2Int.right
+                : Vector2Int.left;
+
+            if (Mathf.Abs(difference.y) > 0.001f)
             {
-                state = WallmasterState.Retreating;
-                return;
+                secondaryDirection = difference.y > 0f
+                    ? Vector2Int.up
+                    : Vector2Int.down;
+            }
+        }
+        else
+        {
+            primaryDirection = difference.y > 0f
+                ? Vector2Int.up
+                : Vector2Int.down;
+
+            if (Mathf.Abs(difference.x) > 0.001f)
+            {
+                secondaryDirection = difference.x > 0f
+                    ? Vector2Int.right
+                    : Vector2Int.left;
             }
         }
 
-        pursuitSteps++;
+        if (TryBeginStep(primaryDirection))
+            return;
 
-        if (pursuitSteps >= pursuitStepLimit)
-            state = WallmasterState.Retreating;
-    }
-
-    private Vector2Int GetDirectionToPlayer(
-        Vector2Int current,
-        Vector2Int target)
-    {
-        Vector2Int difference = target - current;
-
-        if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
-            return difference.x > 0 ? Vector2Int.right : Vector2Int.left;
-
-        return difference.y > 0 ? Vector2Int.up : Vector2Int.down;
-    }
-
-    private Vector2Int GetAlternateDirection(
-        Vector2Int current,
-        Vector2Int target,
-        Vector2Int previousDirection)
-    {
-        Vector2Int difference = target - current;
-
-        if (previousDirection.x != 0 && difference.y != 0)
-            return difference.y > 0 ? Vector2Int.up : Vector2Int.down;
-
-        if (previousDirection.y != 0 && difference.x != 0)
-            return difference.x > 0 ? Vector2Int.right : Vector2Int.left;
-
-        return Vector2Int.zero;
-    }
-
-    // ==========================
-    // Retreat and carrying
-    // ==========================
-    private void RetreatToWall()
-    {
-        if (!hasTarget)
+        if (secondaryDirection != Vector2Int.zero &&
+            TryBeginStep(secondaryDirection))
         {
-            targetGridPosition = FindNearestWallTile(currentGridPosition);
-            hasTarget = true;
-        }
-
-        if (currentGridPosition == targetGridPosition)
-        {
-            OnDespawn?.Invoke();
-            gameObject.SetActive(false);
             return;
         }
 
-        MoveOneTileTowardTarget();
+        // No available step toward the player.
+        state = WallmasterState.Retreating;
     }
 
-    public void GrabPlayer(IGridMovement player)
+    private bool TryBeginStep(Vector2Int direction)
+    {
+        Vector3 nextTile = currentTile + new Vector3(
+            direction.x * tileSize,
+            direction.y * tileSize,
+            0f
+        );
+
+        if (IsBlocked(nextTile))
+            return false;
+
+        targetTile = nextTile;
+        isMoving = true;
+        isPursuitStep = true;
+
+        return true;
+    }
+
+    // ==========================
+    // Carrying player
+    // ==========================
+    protected override void OnHitPlayer()
+    {
+        if (state != WallmasterState.Pursuing)
+            return;
+
+        GameObject playerObject = GameObject.FindWithTag("Player");
+
+        if (playerObject == null)
+            return;
+
+        ArrowKeyMovement player =
+            playerObject.GetComponentInParent<ArrowKeyMovement>();
+
+        GrabPlayer(player);
+    }
+
+    public void GrabPlayer(ArrowKeyMovement player)
     {
         if (player == null || state != WallmasterState.Pursuing)
             return;
@@ -182,151 +263,94 @@ public class Wallmaster : Enemy
         carriedPlayer.SetCarried(true);
 
         state = WallmasterState.CarryingPlayer;
-        hasTarget = false;
     }
 
-    private void CarryPlayerToWall()
+    private void SyncCarriedPlayer()
     {
-        if (!hasTarget)
-        {
-            targetGridPosition = FindNearestWallTile(currentGridPosition);
-            hasTarget = true;
-        }
+        if (carriedPlayer == null)
+            return;
 
-        if (currentGridPosition == targetGridPosition)
-        {
-            if (carriedPlayer != null)
-            {
-                carriedPlayer.SetCarried(false);
-                carriedPlayer = null;
-            }
+        Vector3 playerPosition = new Vector3(
+            rb.position.x,
+            rb.position.y,
+            carriedPlayer.transform.position.z
+        );
 
-            OnPlayerCarriedOut?.Invoke();
-            gameObject.SetActive(false);
+        carriedPlayer.SetCarriedPosition(playerPosition);
+    }
+
+    // ==========================
+    // Retreat and return
+    // ==========================
+    private void BeginReturnStep()
+    {
+        if (pursuitPath.Count <= 1)
+        {
+            FinishReturn();
             return;
         }
 
-        MoveOneTileTowardTarget();
+        // Follow the path in reverse, one tile at a time.
+        targetTile = pursuitPath[pursuitPath.Count - 2];
+        isMoving = true;
+        isPursuitStep = false;
+    }
+
+    private void FinishReturn()
+    {
+        bool carryingPlayer = state == WallmasterState.CarryingPlayer;
 
         if (carriedPlayer != null)
-            carriedPlayer.SetCarriedPosition(currentGridPosition);
-    }
-
-    // ==========================
-    // Grid movement
-    // ==========================
-    private bool TryMoveOneTile(Vector2Int direction)
-    {
-        Vector2Int nextPosition = currentGridPosition + direction;
-
-        if (IsWallTile(nextPosition))
-            return false;
-
-        currentGridPosition = nextPosition;
-        transform.position = GridToWorld(currentGridPosition);
-
-        if (carriedPlayer != null)
-            carriedPlayer.SetGridPosition(currentGridPosition);
-
-        return true;
-    }
-
-    private void MoveOneTileTowardTarget()
-    {
-        Vector2Int difference = targetGridPosition - currentGridPosition;
-
-        Vector2Int direction;
-
-        if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
-            direction = difference.x > 0 ? Vector2Int.right : Vector2Int.left;
-        else if (difference.y != 0)
-            direction = difference.y > 0 ? Vector2Int.up : Vector2Int.down;
-        else
-            direction = Vector2Int.zero;
-
-        if (direction != Vector2Int.zero && !TryMoveOneTile(direction))
-            hasTarget = false;
-    }
-
-    // ==========================
-    // Wall detection
-    // ==========================
-    private Vector2Int FindNearestWallTile(Vector2Int origin)
-    {
-        Vector2Int bestPosition = origin;
-        int bestDistance = int.MaxValue;
-
-        Vector2Int[] directions =
         {
-            Vector2Int.up,
-            Vector2Int.down,
-            Vector2Int.left,
-            Vector2Int.right
-        };
-
-        foreach (Vector2Int direction in directions)
-        {
-            for (int distance = 1; distance <= maxWallSearchDistance; distance++)
-            {
-                Vector2Int position = origin + direction * distance;
-
-                if (!IsWallTile(position))
-                    continue;
-
-                Vector2Int lastWalkablePosition = position - direction;
-                int totalDistance = Mathf.Abs(lastWalkablePosition.x - origin.x)
-                    + Mathf.Abs(lastWalkablePosition.y - origin.y);
-
-                if (totalDistance < bestDistance)
-                {
-                    bestDistance = totalDistance;
-                    bestPosition = lastWalkablePosition;
-                }
-
-                break;
-            }
+            carriedPlayer.SetCarried(false);
+            carriedPlayer = null;
         }
 
-        return bestPosition;
+        if (carryingPlayer)
+            OnPlayerCarriedOut?.Invoke();
+        else
+            OnDespawn?.Invoke();
+
+        gameObject.SetActive(false);
     }
 
-    private bool IsWallTile(Vector2Int gridPosition)
+    // ==========================
+    // Collision checks
+    // ==========================
+    private bool IsBlocked(Vector3 position)
     {
-        Vector3 worldPosition = GridToWorld(gridPosition);
-
         Collider[] hits = Physics.OverlapBox(
-            worldPosition,
+            new Vector3(position.x, position.y, entryPosition.z),
             new Vector3(tileSize * 0.4f, tileSize * 0.4f, 0.4f)
         );
 
         foreach (Collider hit in hits)
         {
             if (hit.transform == transform ||
-                hit.transform.IsChildOf(transform))
+                hit.transform.IsChildOf(transform) ||
+                hit.isTrigger)
+            {
                 continue;
+            }
 
             if (hit.CompareTag("wall") ||
                 hit.GetComponentInParent<LockedDoor>() != null)
+            {
+                return true;
+            }
+
+            GridWalk otherEnemy = hit.GetComponentInParent<GridWalk>();
+
+            if (otherEnemy != null && otherEnemy != this)
+                return true;
+
+            Wallmaster otherWallmaster =
+                hit.GetComponentInParent<Wallmaster>();
+
+            if (otherWallmaster != null && otherWallmaster != this)
                 return true;
         }
 
         return false;
-    }
-
-    private Vector2Int WorldToGrid(Vector3 position)
-    {
-        return new Vector2Int(
-            Mathf.RoundToInt(position.x / tileSize),
-            Mathf.RoundToInt(position.y / tileSize)
-        );
-    }
-
-    private Vector3 GridToWorld(Vector2Int position)
-    {
-        return new Vector3(
-            position.x * tileSize,
-            position.y * tileSize,
-            transform.position.z
-        );
     }
 }
