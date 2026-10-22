@@ -72879,6 +72879,7 @@ MonoBehaviour:
   movement_speed: 3
   gridSize: 0.1
   attackTime: 0.5
+  isInGambleRoom: 0
   inventory: {fileID: 666988745}
   weapons:
   - {fileID: 361730826637130471, guid: 1678fa2546a767f449e9ae9d1286f007, type: 3}
@@ -177026,7 +177027,7 @@ GameObject:
   - component: {fileID: 1695397150}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: GambleRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
