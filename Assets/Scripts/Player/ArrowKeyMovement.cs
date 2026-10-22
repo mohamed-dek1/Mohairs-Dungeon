@@ -42,6 +42,8 @@ public class ArrowKeyMovement : MonoBehaviour
     private GameObject activeBomb;
     private bool isCarried;
 
+    public GameManager gameManager;
+
     public bool getIsStunned()
     {
         return isStunned;
@@ -86,6 +88,11 @@ public class ArrowKeyMovement : MonoBehaviour
                 StartCoroutine(PlaceBomb());
             }
             
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            gameManager.Gamble(inventory, GetComponent<Health>());
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
