@@ -56,4 +56,25 @@ public class GameManager : MonoBehaviour
     {
         SFXSource.volume = volume;
     }
+
+    public void Gamble(Inventory inventory, Health health)
+    {
+        int randomNumber = Random.Range(0, 100);
+        if (randomNumber % 2 == 0)
+        {
+            health.Heal(1);
+            if (inventory.Coins == 0)
+            {
+                inventory.AddCoins(1);
+            }
+            inventory.AddCoins(inventory.Coins);
+            PlaySFX(itemPickup);
+        }
+        else
+        {
+            health.TakeDamage(1);
+            inventory.UseCoin(inventory.Coins / 2);
+            PlaySFX(playerHurt);
+        }
+    }
 }

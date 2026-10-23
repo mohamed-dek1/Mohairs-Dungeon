@@ -18,6 +18,7 @@ TagManager:
   - Player Hurtbox
   - BowRoomEnter
   - BowRoomExit
+  - GambleRoom
   layers:
   - Default
   - TransparentFX

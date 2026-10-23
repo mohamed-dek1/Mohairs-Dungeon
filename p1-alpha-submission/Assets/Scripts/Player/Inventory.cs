@@ -1,0 +1,176 @@
+using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+
+public enum ItemType
+{
+    None,
+    Sword,
+    Bow,
+    Bomb,
+    Boomerang
+}
+
+public class Inventory : MonoBehaviour
+{
+    [SerializeField] private int keys = 0;
+    [SerializeField] private int coins = 0;
+    [SerializeField] private int bombs = 0;
+
+    [SerializeField] private ItemType currentWeapon = ItemType.Sword;
+    [SerializeField] private ItemType currentItem = ItemType.None;
+
+    private HashSet<ItemType> unlockedItems = new HashSet<ItemType>();
+
+    public void Start()
+    {
+        UnlockItem(ItemType.Bow);
+        UnlockItem(ItemType.Boomerang);
+    }
+
+    public void Update()
+    {
+        if (GameManager.god_mode)
+        {
+            coins = 99;
+            bombs = 99;
+            keys = 99;
+        }
+    }
+
+    // UNLOCK AND HAS ITEM //
+
+    public void UnlockItem(ItemType item)
+    {
+        if (!unlockedItems.Contains(item))
+            unlockedItems.Add(item);
+    }
+
+    public bool HasItem(ItemType item) {
+        return unlockedItems.Contains(item);
+    }
+    
+    // CURRENT WEAPON AND ITEM //
+
+    public ItemType CurrentWeapon {
+        get { return currentWeapon; }
+    }
+
+    public ItemType CurrentItem {
+        get { return currentItem; }
+    }
+
+    public void SetCurrentWeapon(ItemType weapon)
+    {
+        currentWeapon = weapon;
+    }
+
+    public void SetCurrentItem(ItemType item)
+    {
+        if (item == ItemType.None || HasItem(item))
+            currentItem = item;
+    }
+
+    public void SelectNextUnlockedItem()
+    {
+        ItemType[] allItems = (ItemType[])Enum.GetValues(typeof(ItemType));
+        if (allItems.Length == 0) return;
+
+        int currentIndex = Array.IndexOf(allItems, currentItem);
+
+        for (int i = 1; i <= allItems.Length; i++)
+        {
+            int nextIndex = (currentIndex + i) % allItems.Length;
+            ItemType nextItem = allItems[nextIndex];
+
+            if (nextItem == ItemType.None || HasItem(nextItem))
+            {
+                SetCurrentItem(nextItem);
+                break;
+            }
+        }
+    }
+
+    // COINS AND BOMBS //
+
+    public int Coins {
+        get { return coins; }
+    }
+
+    public int Bombs {
+        get { return bombs; }
+    }
+
+    public void AddCoins(int amount) {
+        coins += amount;
+        if (coins > 99)
+        {
+            coins = 99;
+        }
+    }
+    public bool UseArrow()
+    {
+        if (coins <= 0) return false;
+        coins--;
+        return true;
+    }
+
+    public bool UseCoin(int amount)
+    {
+        if (coins >= amount)
+        {
+            coins -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    public void AddBombs(int amount) {
+        bombs += amount;
+
+        if (bombs > 99)
+        {
+            bombs = 99;
+        }
+
+        if (!HasItem(ItemType.Bomb))
+        {
+            unlockedItems.Add(ItemType.Bomb);
+        }
+        
+    }
+    public bool UseBomb()
+    {
+        if (bombs <= 0) return false;
+        bombs--;
+
+        if (bombs <= 0)
+        {
+            unlockedItems.Remove(ItemType.Bomb);
+        }
+
+        return true;
+    }
+
+    // KEYS //
+
+    public int Keys {
+        get { return keys; }
+    }
+
+    public void AddKey() {
+        keys++;
+        if (keys > 99)
+        {
+            keys = 99;
+        }
+    }
+
+    public bool UseKey()
+    {
+        if (keys <= 0) return false;
+        keys--;
+        return true;
+    }
+}

@@ -12,6 +12,7 @@ public class ArrowKeyMovement : MonoBehaviour
     public float movement_speed = 4.0f;
     public float gridSize = 0.5f;
     public float attackTime = 0.5f;
+    public bool isInGambleRoom = false;
 
     // ==========================
     // Serialized fields
@@ -41,6 +42,8 @@ public class ArrowKeyMovement : MonoBehaviour
     private GameObject activeBoomerang;
     private GameObject activeBomb;
     private bool isCarried;
+
+    public GameManager gameManager;
 
     public bool getIsStunned()
     {
@@ -88,6 +91,11 @@ public class ArrowKeyMovement : MonoBehaviour
             
         }
 
+        if (Input.GetKeyDown(KeyCode.G) && isInGambleRoom)
+        {
+            gameManager.Gamble(inventory, GetComponent<Health>());
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
         {
             inventory.SelectNextUnlockedItem();
@@ -120,6 +128,22 @@ public class ArrowKeyMovement : MonoBehaviour
         
         Vector2 current_input = GetInput();
         rb.linearVelocity = current_input;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("GambleRoom"))
+        {
+            isInGambleRoom = true;
+        }
+    }
+  
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("GambleRoom"))
+        {
+            isInGambleRoom = false;
+        }
     }
 
     [ContextMenu("Trigger Stun")]
