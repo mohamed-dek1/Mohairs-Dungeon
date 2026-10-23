@@ -3,8 +3,8 @@ using UnityEngine;
 public class Boomerang : Projectile
 {
     private float launchTime;
-    private bool isReturning = false;
-    private Transform playerTransform;
+    protected bool isReturning = false;
+    protected Transform thrower; // flies back to this
     private Transform carriedItem = null;
 
     [SerializeField] float returnDelay = 0.5f;
@@ -14,10 +14,10 @@ public class Boomerang : Projectile
     {
         rb = GetComponent<Rigidbody>();
         
-        GameObject player = GameObject.FindGameObjectWithTag("Player"); // this needs to be updated if we have enemies that use boomerangs...
+        GameObject player = GameObject.FindGameObjectWithTag("Player"); // enemy boomerangs (GoriyaBoomerang) set their own thrower
         if (player != null)
         {
-            playerTransform = player.transform;
+            thrower = player.transform;
         }
     }
 
@@ -39,17 +39,17 @@ public class Boomerang : Projectile
 
         if (isReturning)
         {
-            if (playerTransform == null)
+            if (thrower == null)
             {
                 Destroy(gameObject);
                 return;
             }
 
-            Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
-            rb.linearVelocity = directionToPlayer * speed;
+            Vector2 directionToThrower = (thrower.position - transform.position).normalized;
+            rb.linearVelocity = directionToThrower * speed;
 
-            float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
-            if (distanceToPlayer < 0.001f)
+            float distanceToThrower = Vector2.Distance(transform.position, thrower.position);
+            if (distanceToThrower < 0.001f)
             {
                 Catch();
             }
@@ -69,7 +69,7 @@ public class Boomerang : Projectile
             // Trigger pickup logic if the item has an ItemPickup component
             if (carriedItem.TryGetComponent<Collectable>(out var item))
             {
-                item.Collect(playerTransform.GetComponent<Inventory>());
+                item.Collect(thrower.GetComponent<Inventory>());
             }
         }
 

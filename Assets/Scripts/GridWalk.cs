@@ -190,7 +190,8 @@ public abstract class GridWalk : Enemy
         if (moveDir == Vector2.zero)
             return;
 
-        targetTile -= moveDir * tileSize * 2f;
+        // head back to the tile it just left, which is known to be open
+        targetTile -= moveDir * tileSize;
         moveDir = -moveDir;
     }
 }
